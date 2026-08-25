@@ -427,7 +427,7 @@ button:hover{
 
 
 /* ========================================= */
-/* FALLING POLAROIDS                         */
+/* QUIZ PAGE                                 */
 /* ========================================= */
 
 #p4{
@@ -435,63 +435,624 @@ button:hover{
     overflow:hidden;
 }
 
-#p4 .card{
+
+/* ========================================= */
+/* QUIZ NOTEBOOK                             */
+/* ========================================= */
+
+.quiz-card{
+    width:min(95%,500px);
+    background:
+        linear-gradient(
+            rgba(255,250,235,.97),
+            rgba(255,248,225,.97)
+        );
+
+    padding:34px 28px 28px;
+
+    border-radius:8px;
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.20),
+        0 3px 10px rgba(0,0,0,.08);
+
     position:relative;
-    z-index:20;
+
+    z-index:10;
+
+    transform:rotate(-.6deg);
+
+    border-left:8px solid rgba(255,77,136,.18);
+
+    overflow:hidden;
 }
+
+
+/* notebook lines */
+
+.quiz-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 31px,
+            rgba(190,170,150,.20) 32px
+        );
+
+    pointer-events:none;
+
+}
+
+
+/* little notebook holes */
+
+.quiz-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    bottom:0;
+    left:20px;
+
+    width:2px;
+
+    background:rgba(255,77,136,.18);
+
+    pointer-events:none;
+
+}
+
+
+.quiz-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+.quiz-intro{
+
+    font-family:'Caveat',cursive;
+
+    font-size:1.65rem;
+
+    color:#c94c72;
+
+    margin-bottom:5px;
+
+}
+
+
+.quiz-title{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:2rem;
+
+    color:#5b4a45;
+
+    margin-bottom:4px;
+
+}
+
+
+.quiz-subtitle{
+
+    font-family:'Caveat',cursive;
+
+    font-size:1.25rem;
+
+    color:#8b7770;
+
+    margin-bottom:18px;
+
+}
+
+
+/* ========================================= */
+/* HEART PROGRESS                            */
+/* ========================================= */
+
+.quiz-progress{
+
+    font-size:1.25rem;
+
+    letter-spacing:6px;
+
+    color:#ff4d88;
+
+    margin:12px 0 18px;
+
+    transition:.3s;
+
+}
+
+
+.quiz-progress.pop{
+
+    animation:heartProgress .45s ease;
+
+}
+
+
+@keyframes heartProgress{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.18);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+
+/* ========================================= */
+/* QUESTION                                  */
+/* ========================================= */
+
+.quiz-question-number{
+
+    font-size:.75rem;
+
+    letter-spacing:2px;
+
+    color:#b48a96;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+
+.quiz-question{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:1.35rem;
+
+    color:#5b4a45;
+
+    margin-bottom:17px;
+
+}
+
+
+/* ========================================= */
+/* ANSWERS                                   */
+/* ========================================= */
+
+.quiz-options{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+
+}
+
+
+.quiz-option{
+
+    width:100%;
+
+    margin:0;
+
+    background:rgba(255,255,255,.72);
+
+    color:#6d5954;
+
+    border:1px solid rgba(201,76,114,.16);
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.06);
+
+    text-align:left;
+
+    padding:12px 15px;
+
+    border-radius:14px;
+
+    font-size:.9rem;
+
+}
+
+
+.quiz-option:hover{
+
+    background:#fff;
+
+    transform:
+        translateX(4px)
+        rotate(.4deg);
+
+}
+
+
+.quiz-option.correct{
+
+    background:#ffe2ec;
+
+    color:#c94c72;
+
+    border-color:#ff9fbe;
+
+}
+
+
+.quiz-option.wrong{
+
+    background:#f2eeee;
+
+    color:#8b7770;
+
+    border-color:#d9cccc;
+
+    animation:wrongShake .35s ease;
+
+}
+
+
+.quiz-option.disabled{
+
+    pointer-events:none;
+
+}
+
+
+@keyframes wrongShake{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-5px);
+    }
+
+    50%{
+        transform:translateX(5px);
+    }
+
+    75%{
+        transform:translateX(-3px);
+    }
+
+    100%{
+        transform:translateX(0);
+    }
+
+}
+
+
+/* ========================================= */
+/* QUIZ FEEDBACK                             */
+/* ========================================= */
+
+.quiz-feedback{
+
+    min-height:32px;
+
+    font-family:'Caveat',cursive;
+
+    font-size:1.35rem;
+
+    color:#c94c72;
+
+    margin-top:12px;
+
+    opacity:0;
+
+    transform:translateY(5px);
+
+    transition:.3s;
+
+}
+
+
+.quiz-feedback.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+/* ========================================= */
+/* QUIZ FLIP                                 */
+/* ========================================= */
+
+.quiz-card.flip-out{
+
+    animation:
+        quizFlipOut .45s
+        cubic-bezier(.22,1,.36,1)
+        forwards;
+
+}
+
+
+.quiz-card.flip-in{
+
+    animation:
+        quizFlipIn .55s
+        cubic-bezier(.22,1,.36,1)
+        forwards;
+
+}
+
+
+@keyframes quizFlipOut{
+
+    0%{
+        transform:
+            rotate(-.6deg)
+            scale(1);
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            rotate(-4deg)
+            translateX(-18px)
+            scale(.96);
+        opacity:0;
+    }
+
+}
+
+
+@keyframes quizFlipIn{
+
+    0%{
+        transform:
+            rotate(4deg)
+            translateX(18px)
+            scale(.96);
+        opacity:0;
+    }
+
+    100%{
+        transform:
+            rotate(-.6deg)
+            translateX(0)
+            scale(1);
+        opacity:1;
+    }
+
+}
+
+
+/* ========================================= */
+/* QUIZ RESULT                               */
+/* ========================================= */
+
+.quiz-result{
+
+    display:none;
+
+    animation:
+        resultAppear
+        .7s
+        cubic-bezier(.22,1,.36,1)
+        forwards;
+
+}
+
+
+.quiz-result.show{
+
+    display:block;
+
+}
+
+
+@keyframes resultAppear{
+
+    0%{
+        opacity:0;
+        transform:
+            scale(.85)
+            rotate(-3deg)
+            translateY(15px);
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            scale(1)
+            rotate(0)
+            translateY(0);
+    }
+
+}
+
+
+.result-score{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:2rem;
+
+    color:#d6336c;
+
+    margin:12px 0;
+
+}
+
+
+.result-message{
+
+    font-family:'Caveat',cursive;
+
+    font-size:1.45rem;
+
+    line-height:1.4;
+
+    color:#5b4a45;
+
+    margin-bottom:15px;
+
+}
+
+
+.result-hearts{
+
+    font-size:1.4rem;
+
+    letter-spacing:5px;
+
+    color:#ff4d88;
+
+    margin:8px 0 12px;
+
+}
+
+
+.quiz-continue{
+
+    margin-top:10px;
+
+}
+
+
+/* ========================================= */
+/* FALLING POLAROIDS                         */
+/* ========================================= */
+
+#p5{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+#p5 .card{
+
+    position:relative;
+
+    z-index:20;
+
+}
+
 
 .polaroid-rain{
+
     position:absolute;
+
     inset:0;
+
     overflow:hidden;
+
     pointer-events:none;
+
     z-index:2;
+
 }
 
+
 .falling-polaroid{
+
     position:absolute;
+
     top:-200px;
+
     width:135px;
+
     padding:10px 10px 24px;
+
     background:#fff;
+
     box-shadow:
         0 12px 30px rgba(0,0,0,.20),
         0 3px 8px rgba(0,0,0,.08);
+
     border-radius:2px;
+
     text-align:center;
-    animation:polaroidFall linear forwards;
+
+    animation:
+        polaroidFall
+        linear
+        forwards;
+
     will-change:transform;
+
 }
+
 
 .falling-photo{
+
     width:100%;
+
     height:110px;
+
     background:#fdf3f7;
+
     overflow:hidden;
+
 }
+
 
 .falling-photo img{
+
     width:100%;
+
     height:100%;
+
     display:block;
+
     object-fit:cover;
+
 }
 
+
 .falling-caption{
+
     font-size:9px;
+
     font-family:'Poppins',sans-serif;
+
     color:#777;
+
     margin-top:7px;
+
     letter-spacing:.3px;
+
 }
+
 
 @keyframes polaroidFall{
 
     0%{
+
         transform:
             translateY(-200px)
             rotate(var(--rotation));
+
         opacity:0;
+
     }
 
     10%{
@@ -499,56 +1060,93 @@ button:hover{
     }
 
     25%{
+
         transform:
             translateY(25vh)
-            rotate(calc(var(--rotation) + 8deg));
+            rotate(
+                calc(
+                    var(--rotation) + 8deg
+                )
+            );
+
     }
 
     50%{
+
         transform:
             translateY(50vh)
-            rotate(calc(var(--rotation) - 8deg));
+            rotate(
+                calc(
+                    var(--rotation) - 8deg
+                )
+            );
+
     }
 
     75%{
+
         transform:
             translateY(75vh)
-            rotate(calc(var(--rotation) + 5deg));
+            rotate(
+                calc(
+                    var(--rotation) + 5deg
+                )
+            );
+
     }
 
     100%{
+
         transform:
             translateY(115vh)
             rotate(var(--rotation));
+
         opacity:.9;
+
     }
 
 }
+
 
 @media(max-width:500px){
 
     .falling-polaroid{
+
         width:105px;
-        padding:8px 8px 18px;
+
+        padding:
+            8px 8px 18px;
+
     }
 
     .falling-photo{
+
         height:85px;
+
     }
 
     .falling-caption{
+
         font-size:8px;
+
     }
 
 }
 
-#p4 h1{
+
+#p5 h1{
+
     color:#d6336c;
+
 }
 
-#p4 button{
+
+#p5 button{
+
     position:relative;
+
     z-index:30;
+
 }
 
 
@@ -557,30 +1155,48 @@ button:hover{
 /* ========================================= */
 
 #p6{
+
     overflow:hidden;
+
 }
 
+
 .letter-card{
+
     width:min(95%,500px);
+
     background:
         linear-gradient(
             rgba(255,250,235,.96),
             rgba(255,248,225,.96)
         );
-    padding:38px 32px 30px;
+
+    padding:
+        38px 32px 30px;
+
     border-radius:5px;
+
     box-shadow:
         0 18px 45px rgba(0,0,0,.20),
         0 3px 8px rgba(0,0,0,.08);
+
     position:relative;
+
     transform:rotate(-1deg);
+
     z-index:10;
+
 }
 
+
 .letter-card::before{
+
     content:"";
+
     position:absolute;
+
     inset:0;
+
     background:
         repeating-linear-gradient(
             to bottom,
@@ -588,55 +1204,99 @@ button:hover{
             transparent 31px,
             rgba(190,170,150,.22) 32px
         );
+
     pointer-events:none;
+
 }
 
+
 .letter-tape{
+
     position:absolute;
+
     width:95px;
+
     height:25px;
-    background:rgba(255,182,193,.55);
+
+    background:
+        rgba(255,182,193,.55);
+
     top:-10px;
+
     left:50%;
+
     transform:
         translateX(-50%)
         rotate(-3deg);
-    box-shadow:0 2px 5px rgba(0,0,0,.08);
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.08);
+
 }
+
 
 .letter-content{
+
     position:relative;
+
     z-index:2;
+
 }
+
 
 .letter-title{
+
     font-family:'Caveat',cursive;
+
     font-size:2.5rem;
+
     color:#c94c72;
+
     margin-bottom:12px;
+
 }
+
 
 .letter-text{
+
     font-family:'Caveat',cursive;
+
     font-size:1.55rem;
+
     line-height:1.55;
+
     color:#5b4a45;
+
     text-align:left;
+
 }
+
 
 .letter-sign{
+
     font-family:'Caveat',cursive;
+
     font-size:1.7rem;
+
     text-align:right;
+
     margin-top:18px;
+
     color:#c94c72;
+
 }
 
+
 .letter-card button{
+
     font-family:'Poppins',sans-serif;
+
     position:relative;
+
     z-index:3;
+
     margin-top:20px;
+
 }
 
 
@@ -645,32 +1305,58 @@ button:hover{
 /* ========================================= */
 
 .letter-decoration{
+
     position:absolute;
+
     font-size:32px;
+
     opacity:.75;
+
     z-index:1;
-    animation:tinyFloat 4s ease-in-out infinite;
+
+    animation:
+        tinyFloat
+        4s ease-in-out infinite;
+
 }
+
 
 .letter-decoration.one{
+
     top:10%;
+
     left:8%;
+
 }
 
+
 .letter-decoration.two{
+
     bottom:12%;
+
     right:8%;
+
     animation-delay:1s;
+
 }
+
 
 @keyframes tinyFloat{
 
     0%,100%{
-        transform:translateY(0) rotate(-5deg);
+
+        transform:
+            translateY(0)
+            rotate(-5deg);
+
     }
 
     50%{
-        transform:translateY(-8px) rotate(5deg);
+
+        transform:
+            translateY(-8px)
+            rotate(5deg);
+
     }
 
 }
@@ -681,19 +1367,34 @@ button:hover{
 /* ========================================= */
 
 #p7 .card{
-    animation:finalAppear 1s ease;
+
+    animation:
+        finalAppear
+        1s ease;
+
 }
+
 
 @keyframes finalAppear{
 
     0%{
+
         opacity:0;
-        transform:scale(.9) translateY(20px);
+
+        transform:
+            scale(.9)
+            translateY(20px);
+
     }
 
     100%{
+
         opacity:1;
-        transform:scale(1) translateY(0);
+
+        transform:
+            scale(1)
+            translateY(0);
+
     }
 
 }
@@ -710,15 +1411,24 @@ button:hover{
 <!-- MUSIC                                    -->
 <!-- ========================================= -->
 
-<audio id="bgMusic" loop preload="auto">
+<audio
+    id="bgMusic"
+    loop
+    preload="auto">
 
-    <source src="music/song.mp3" type="audio/mpeg">
+    <source
+        src="music/song.mp3"
+        type="audio/mpeg">
 
 </audio>
 
 
-<button id="musicToggle" onclick="toggleMusic()">
+<button
+    id="musicToggle"
+    onclick="toggleMusic()">
+
     🎵 Music: ON
+
 </button>
 
 
@@ -726,7 +1436,9 @@ button:hover{
 <!-- INTRO                                    -->
 <!-- ========================================= -->
 
-<section id="musicGate" class="page active">
+<section
+    id="musicGate"
+    class="page active">
 
     <div class="card">
 
@@ -750,8 +1462,12 @@ button:hover{
             or continue silently, I won't judge :>
         </p>
 
-        <button class="secondary" onclick="continueSilent()">
+        <button
+            class="secondary"
+            onclick="continueSilent()">
+
             Continue silently 🤫
+
         </button>
 
     </div>
@@ -763,7 +1479,9 @@ button:hover{
 <!-- PAGE 1                                   -->
 <!-- ========================================= -->
 
-<section id="p1" class="page">
+<section
+    id="p1"
+    class="page">
 
     <div class="card">
 
@@ -792,7 +1510,9 @@ button:hover{
 <!-- PAGE 2                                   -->
 <!-- ========================================= -->
 
-<section id="p2" class="page">
+<section
+    id="p2"
+    class="page">
 
     <div class="card">
 
@@ -808,8 +1528,12 @@ button:hover{
 
             <div id="excuse"></div>
 
-            <button id="yesBtn" onclick="yes()">
+            <button
+                id="yesBtn"
+                onclick="yes()">
+
                 YESSS 💖
+
             </button>
 
             <button id="no">
@@ -831,9 +1555,13 @@ button:hover{
 <!-- PAGE 3                                   -->
 <!-- ========================================= -->
 
-<section id="p3" class="page">
+<section
+    id="p3"
+    class="page">
 
-    <div class="ticket" id="ticket">
+    <div
+        class="ticket"
+        id="ticket">
 
         <div class="ticket-top">
 
@@ -846,6 +1574,7 @@ button:hover{
             </div>
 
         </div>
+
 
         <div class="ticket-body">
 
@@ -871,6 +1600,7 @@ button:hover{
 
                 </div>
 
+
                 <div>
 
                     <span>
@@ -882,6 +1612,7 @@ button:hover{
                     </strong>
 
                 </div>
+
 
                 <div>
 
@@ -899,10 +1630,15 @@ button:hover{
 
         </div>
 
+
         <div class="ticket-bottom">
 
-            <button class="tear" onclick="tearTicket()">
+            <button
+                class="tear"
+                onclick="tearTicket()">
+
                 ✂ Grab the Ticket!!
+
             </button>
 
         </div>
@@ -913,15 +1649,149 @@ button:hover{
 
 
 <!-- ========================================= -->
-<!-- PAGE 4                                   -->
+<!-- PAGE 4 — QUIZ                           -->
 <!-- ========================================= -->
 
-<section id="p4" class="page">
+<section
+    id="p4"
+    class="page">
+
+    <div class="quiz-card" id="quizCard">
+
+        <div class="quiz-content">
+
+
+            <!-- QUIZ INTRO -->
+
+            <div id="quizIntro">
+
+                <div class="quiz-intro">
+                    wehhh sige nga, gaano mo muna ako kakilala? 😭
+                </div>
+
+                <div class="quiz-title">
+                    How Well Do You Know Me?
+                </div>
+
+                <div class="quiz-subtitle">
+                    Okayyy, let's see if you've been paying attention...
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div
+                class="quiz-progress"
+                id="quizProgress">
+
+                ○ ○ ○ ○ ○
+
+            </div>
+
+
+            <!-- QUESTION AREA -->
+
+            <div id="questionArea">
+
+                <div
+                    class="quiz-question-number"
+                    id="questionNumber">
+
+                    QUESTION 1 / 5
+
+                </div>
+
+
+                <div
+                    class="quiz-question"
+                    id="quizQuestion">
+
+                    What's my favorite food? 🍛
+
+                </div>
+
+
+                <div
+                    class="quiz-options"
+                    id="quizOptions">
+
+                </div>
+
+
+                <div
+                    class="quiz-feedback"
+                    id="quizFeedback">
+
+                </div>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <div
+                class="quiz-result"
+                id="quizResult">
+
+                <div class="quiz-title">
+                    💌 YOUR RESULTS
+                </div>
+
+
+                <div
+                    class="result-score"
+                    id="resultScore">
+
+                </div>
+
+
+                <div
+                    class="result-hearts"
+                    id="resultHearts">
+
+                </div>
+
+
+                <div
+                    class="result-message"
+                    id="resultMessage">
+
+                </div>
+
+
+                <button
+                    class="quiz-continue"
+                    onclick="show('p5')">
+
+                    Continue → 📸
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================= -->
+<!-- PAGE 5 — POLAROID GALLERY               -->
+<!-- ========================================= -->
+
+<section
+    id="p5"
+    class="page">
 
     <div
         class="polaroid-rain"
         id="polaroidRain">
     </div>
+
 
     <div class="card">
 
@@ -937,69 +1807,49 @@ button:hover{
             Future core memories incoming!? 🌸
         </p>
 
+
         <div class="gallery">
 
             <div class="ph">
+
                 <img
                     src="photos/photo1.jpg"
                     alt="Memory 1">
+
             </div>
 
+
             <div class="ph">
+
                 <img
                     src="photos/photo2.jpg"
                     alt="Memory 2">
+
             </div>
 
+
             <div class="ph">
+
                 <img
                     src="photos/photo3.jpg"
                     alt="Memory 3">
+
             </div>
 
+
             <div class="ph">
+
                 <img
                     src="photos/photo4.jpg"
                     alt="Memory 4">
+
             </div>
 
         </div>
 
-        <button onclick="show('p5')">
-            Ano 'to? random pics lang naman ah 🙄
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================= -->
-<!-- PAGE 5                                   -->
-<!-- ========================================= -->
-
-<section id="p5" class="page">
-
-    <div class="card">
-
-        <div class="emoji">
-            🌙❤️
-        </div>
-
-        <h1>
-            I thinkk I sorta like you bruh
-        </h1>
-
-        <p>
-            Medyo magkalayo man tayo, pero that doesnt mean we cant make beautiful memories along the wayy
-        </p>
-
-        <p style="margin-top:14px;font-weight:600">
-            — Diba? 😝
-        </p>
 
         <button onclick="show('p6')">
-            Nyenyenye andami mong alam 😒
+            Ano 'to? random pics lang naman ah 🙄
         </button>
 
     </div>
@@ -1011,34 +1861,44 @@ button:hover{
 <!-- PAGE 6 — HANDWRITTEN LETTER             -->
 <!-- ========================================= -->
 
-<section id="p6" class="page">
+<section
+    id="p6"
+    class="page">
 
     <div class="letter-decoration one">
         🌸
     </div>
 
+
     <div class="letter-decoration two">
         💗
     </div>
+
 
     <div class="letter-card">
 
         <div class="letter-tape"></div>
 
+
         <div class="letter-content">
+
 
             <div class="letter-title">
                 Dear Jaiii,
             </div>
 
+
             <div class="letter-text">
+
 
                 <p>
                     I don't really know how to put everything I feel into words,
                     so I guess I'll just write it here.
                 </p>
 
+
                 <br>
+
 
                 <p>
                     Thank you for all the little things you do.
@@ -1046,29 +1906,37 @@ button:hover{
                     mean more to me than you know.
                 </p>
 
+
                 <br>
+
 
                 <p>
                     I hope you know that I love you more than anything or anyone in the world,
                     kahit na minsan di tayo masyado naguusap.
                 </p>
 
+
                 <br>
+
 
                 <p>
                     And if you'll let me,
                     I'd like to love you for the rest of our life together hehe...
                 </p>
 
+
                 <div class="letter-sign">
                     — Lander ♡
                 </div>
 
+
             </div>
+
 
             <button onclick="show('p7')">
                 Okay... Last nato PRAMIS 💌
             </button>
+
 
         </div>
 
@@ -1081,7 +1949,9 @@ button:hover{
 <!-- PAGE 7                                   -->
 <!-- ========================================= -->
 
-<section id="p7" class="page">
+<section
+    id="p7"
+    class="page">
 
     <div class="card">
 
@@ -1133,6 +2003,7 @@ function startMusic(){
     const playPromise =
         bgMusic.play();
 
+
     if(playPromise !== undefined){
 
         playPromise.then(()=>{
@@ -1151,7 +2022,10 @@ function startMusic(){
 
     }
 
-    musicToggle.style.display = "block";
+
+    musicToggle.style.display =
+        "block";
+
 
     const gate =
         document.getElementById("musicGate");
@@ -1159,19 +2033,31 @@ function startMusic(){
     const hello =
         document.getElementById("p1");
 
-    gate.classList.add("fade-out");
+
+    gate.classList.add(
+        "fade-out"
+    );
+
 
     setTimeout(()=>{
 
-        gate.classList.remove("active");
+        gate.classList.remove(
+            "active"
+        );
 
-        hello.classList.add("active");
+        hello.classList.add(
+            "active"
+        );
+
 
         setTimeout(()=>{
 
-            hello.classList.add("fade-in");
+            hello.classList.add(
+                "fade-in"
+            );
 
         },50);
+
 
     },3000);
 
@@ -1181,28 +2067,45 @@ function startMusic(){
 function continueSilent(){
 
     const gate =
-        document.getElementById("musicGate");
+        document.getElementById(
+            "musicGate"
+        );
 
     const hello =
         document.getElementById("p1");
 
-    musicToggle.style.display="block";
 
-    musicToggle.textContent="🔇 Music: OFF";
+    musicToggle.style.display =
+        "block";
 
-    gate.classList.add("fade-out");
+    musicToggle.textContent =
+        "🔇 Music: OFF";
+
+
+    gate.classList.add(
+        "fade-out"
+    );
+
 
     setTimeout(()=>{
 
-        gate.classList.remove("active");
+        gate.classList.remove(
+            "active"
+        );
 
-        hello.classList.add("active");
+        hello.classList.add(
+            "active"
+        );
+
 
         setTimeout(()=>{
 
-            hello.classList.add("fade-in");
+            hello.classList.add(
+                "fade-in"
+            );
 
         },50);
+
 
     },1200);
 
@@ -1215,13 +2118,15 @@ function toggleMusic(){
 
         bgMusic.play();
 
-        musicToggle.textContent="🎵 Music: ON";
+        musicToggle.textContent =
+            "🎵 Music: ON";
 
     }else{
 
         bgMusic.pause();
 
-        musicToggle.textContent="🔇 Music: OFF";
+        musicToggle.textContent =
+            "🔇 Music: OFF";
 
     }
 
@@ -1235,10 +2140,13 @@ function toggleMusic(){
 function show(id){
 
     const current =
-        document.querySelector(".page.active");
+        document.querySelector(
+            ".page.active"
+        );
 
     const next =
         document.getElementById(id);
+
 
     if(!next || current === next){
         return;
@@ -1246,51 +2154,52 @@ function show(id){
 
 
     /*
-        Fade the current page out.
+        Fade current page out.
     */
 
-    current.style.opacity = "0";
+    current.style.opacity =
+        "0";
 
 
     setTimeout(()=>{
 
-        current.classList.remove("active");
+        current.classList.remove(
+            "active"
+        );
 
 
-        /*
-            Prepare the next page.
-        */
+        next.style.transition =
+            "none";
 
-        next.style.transition = "none";
-        next.style.opacity = "0";
+        next.style.opacity =
+            "0";
 
-        next.classList.add("active");
+        next.classList.add(
+            "active"
+        );
 
 
         /*
             Force browser to register
-            the invisible state.
+            invisible starting state.
         */
 
         next.offsetHeight;
 
 
-        /*
-            Fade the new page in.
-        */
-
         next.style.transition =
             "opacity .9s ease";
 
-        next.style.opacity = "1";
+        next.style.opacity =
+            "1";
 
 
         /*
-            Start Polaroid rain
-            when the gallery opens.
+            Start Polaroids when
+            gallery opens.
         */
 
-        if(id === "p4"){
+        if(id === "p5"){
 
             startPolaroidRain();
 
@@ -1305,40 +2214,37 @@ function show(id){
 /* SPECIAL PAGE SWITCH                       */
 /* ========================================= */
 
-/*
-    Used for pages that already have
-    their own cinematic transition.
-
-    This prevents the special animation
-    from being followed by another fade.
-*/
-
 function switchPageInstant(id){
 
     const current =
-        document.querySelector(".page.active");
+        document.querySelector(
+            ".page.active"
+        );
 
     const next =
         document.getElementById(id);
+
 
     if(!next || current === next){
         return;
     }
 
 
-    current.classList.remove("active");
+    current.classList.remove(
+        "active"
+    );
 
 
-    next.style.transition = "none";
-    next.style.opacity = "1";
+    next.style.transition =
+        "none";
 
-    next.classList.add("active");
+    next.style.opacity =
+        "1";
 
+    next.classList.add(
+        "active"
+    );
 
-    /*
-        Restore normal transition
-        for future navigation.
-    */
 
     requestAnimationFrame(()=>{
 
@@ -1348,7 +2254,7 @@ function switchPageInstant(id){
     });
 
 
-    if(id === "p4"){
+    if(id === "p5"){
 
         startPolaroidRain();
 
@@ -1385,38 +2291,52 @@ const excuses=[
 function moveNoButton(){
 
     const w=280;
+
     const h=55;
 
 
-    excuse.textContent=
+    excuse.textContent =
         excuses[
             Math.floor(
-                Math.random()*excuses.length
+                Math.random() *
+                excuses.length
             )
         ];
 
 
-    excuse.classList.add("show");
+    excuse.classList.add(
+        "show"
+    );
 
-    no.classList.add("shake");
+
+    no.classList.add(
+        "shake"
+    );
 
 
     setTimeout(()=>{
 
-        no.classList.remove("shake");
+        no.classList.remove(
+            "shake"
+        );
 
-        no.style.left=
+
+        no.style.left =
             Math.random()*w+"px";
 
-        no.style.top=
+
+        no.style.top =
             Math.random()*h+"px";
+
 
     },180);
 
 
     setTimeout(()=>{
 
-        excuse.classList.remove("show");
+        excuse.classList.remove(
+            "show"
+        );
 
     },900);
 
@@ -1448,19 +2368,28 @@ no.addEventListener(
 function yes(){
 
     const card =
-        document.querySelector("#p2 .card");
+        document.querySelector(
+            "#p2 .card"
+        );
+
 
     const btn =
-        document.getElementById("yesBtn");
+        document.getElementById(
+            "yesBtn"
+        );
 
 
-    btn.classList.add("yes-pop");
+    btn.classList.add(
+        "yes-pop"
+    );
 
 
     confetti({
 
         particleCount:180,
+
         spread:120,
+
         origin:{y:.65}
 
     });
@@ -1469,24 +2398,38 @@ function yes(){
     for(let i=0;i<18;i++){
 
         const h =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        h.className="heart";
+
+        h.className =
+            "heart";
+
 
         h.textContent =
             Math.random()>.5
             ?"💖"
             :"🌸";
 
-        h.style.left =
-            (35+Math.random()*30)+"vw";
 
-        h.style.bottom="35vh";
+        h.style.left =
+            (35+Math.random()*30)
+            +"vw";
+
+
+        h.style.bottom =
+            "35vh";
+
 
         h.style.fontSize =
-            (20+Math.random()*20)+"px";
+            (20+Math.random()*20)
+            +"px";
 
-        document.body.appendChild(h);
+
+        document.body.appendChild(
+            h
+        );
 
 
         setTimeout(()=>{
@@ -1498,29 +2441,25 @@ function yes(){
     }
 
 
-    /*
-        The YES button pops first.
-    */
-
     setTimeout(()=>{
 
-        card.classList.add("movie-out");
+        card.classList.add(
+            "movie-out"
+        );
 
     },180);
 
 
-    /*
-        The movie-out animation is now
-        the transition itself.
-
-        NO additional fade.
-    */
-
     setTimeout(()=>{
 
-        card.classList.remove("movie-out");
+        card.classList.remove(
+            "movie-out"
+        );
 
-        switchPageInstant("p3");
+
+        switchPageInstant(
+            "p3"
+        );
 
     },1100);
 
@@ -1534,39 +2473,633 @@ function yes(){
 function tearTicket(){
 
     const ticket =
-        document.getElementById("ticket");
+        document.getElementById(
+            "ticket"
+        );
 
 
     confetti({
 
         particleCount:120,
+
         spread:90,
+
         origin:{y:.55}
 
     });
 
 
+    ticket.classList.add(
+        "rip"
+    );
+
+
+    setTimeout(()=>{
+
+        ticket.classList.remove(
+            "rip"
+        );
+
+
+        switchPageInstant(
+            "p4"
+        );
+
+    },1100);
+
+}
+
+
+/* ========================================= */
+/* QUIZ DATA                                  */
+/* ========================================= */
+
+const quizQuestions = [
+
+    {
+
+        question:
+            "What's my favorite food? 🍛",
+
+        options:[
+
+            "🍛 Curry",
+
+            "🍣 Sushi",
+
+            "🍜 Ramen",
+
+            "🥟 Gyoza"
+
+        ],
+
+        correct:0
+
+    },
+
+
+    {
+
+        question:
+            "When's my birthday? 🎂",
+
+        options:[
+
+            "January 21, 2007",
+
+            "January 22, 2007",
+
+            "January 23, 2007",
+
+            "January 24, 2007"
+
+        ],
+
+        correct:0
+
+    },
+
+
+    {
+
+        question:
+            "What's my favorite color? 🎨",
+
+        options:[
+
+            "🔵 Blue",
+
+            "🔴 Red",
+
+            "⚫ Black",
+
+            "🩶 Gray"
+
+        ],
+
+        correct:0
+
+    },
+
+
+    {
+
+        question:
+            "Ano favorite line ko? 😭",
+
+        options:[
+
+            "papansin",
+
+            "ediwow",
+
+            "hatdog",
+
+            "eme"
+
+        ],
+
+        correct:0
+
+    },
+
+
+    {
+
+        question:
+            "What do I like about you? 🤨",
+
+        options:[
+
+            "Malay koooo 😭",
+
+            "Malay ko rin 😭😭",
+
+            "GIRL AKO DAPAT TINATANONG MO NIYAN 😭",
+
+            "Ewan ko sayo HAHAHAHA"
+
+        ],
+
+        /*
+            ALL answers are correct.
+        */
+
+        correct:"all"
+
+    }
+
+];
+
+
+let currentQuestion = 0;
+
+let quizScore = 0;
+
+let quizAnswered = false;
+
+
+/* ========================================= */
+/* QUIZ ELEMENTS                             */
+/* ========================================= */
+
+const quizCard =
+    document.getElementById(
+        "quizCard"
+    );
+
+const questionNumber =
+    document.getElementById(
+        "questionNumber"
+    );
+
+const quizQuestion =
+    document.getElementById(
+        "quizQuestion"
+    );
+
+const quizOptions =
+    document.getElementById(
+        "quizOptions"
+    );
+
+const quizFeedback =
+    document.getElementById(
+        "quizFeedback"
+    );
+
+const quizProgress =
+    document.getElementById(
+        "quizProgress"
+    );
+
+const questionArea =
+    document.getElementById(
+        "questionArea"
+    );
+
+const quizResult =
+    document.getElementById(
+        "quizResult"
+    );
+
+const resultScore =
+    document.getElementById(
+        "resultScore"
+    );
+
+const resultMessage =
+    document.getElementById(
+        "resultMessage"
+    );
+
+const resultHearts =
+    document.getElementById(
+        "resultHearts"
+    );
+
+
+/* ========================================= */
+/* START QUIZ                                */
+/* ========================================= */
+
+function startQuiz(){
+
+    currentQuestion = 0;
+
+    quizScore = 0;
+
+    quizResult.classList.remove(
+        "show"
+    );
+
+    questionArea.style.display =
+        "block";
+
+    loadQuestion();
+
+}
+
+
+/* ========================================= */
+/* LOAD QUESTION                             */
+/* ========================================= */
+
+function loadQuestion(){
+
+    quizAnswered = false;
+
+
+    const q =
+        quizQuestions[
+            currentQuestion
+        ];
+
+
+    questionNumber.textContent =
+        "QUESTION " +
+        (currentQuestion + 1) +
+        " / 5";
+
+
+    quizQuestion.textContent =
+        q.question;
+
+
+    quizFeedback.textContent =
+        "";
+
+
+    quizFeedback.classList.remove(
+        "show"
+    );
+
+
+    quizOptions.innerHTML =
+        "";
+
+
+    q.options.forEach(
+        (option,index)=>{
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "quiz-option";
+
+
+            button.textContent =
+                option;
+
+
+            button.onclick =
+                () => answerQuestion(
+                    index
+                );
+
+
+            quizOptions.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    updateProgress();
+
+}
+
+
+/* ========================================= */
+/* PROGRESS                                  */
+/* ========================================= */
+
+function updateProgress(){
+
+    let hearts = "";
+
+    for(let i=0;i<5;i++){
+
+        if(i < currentQuestion){
+
+            hearts += "♥ ";
+
+        }else{
+
+            hearts += "○ ";
+
+        }
+
+    }
+
+
     /*
-        Ticket rip animation starts.
+        On final result,
+        all five are filled.
     */
 
-    ticket.classList.add("rip");
+    quizProgress.textContent =
+        hearts.trim();
+
+
+    quizProgress.classList.remove(
+        "pop"
+    );
+
+
+    void quizProgress.offsetWidth;
+
+
+    quizProgress.classList.add(
+        "pop"
+    );
+
+}
+
+
+/* ========================================= */
+/* ANSWER QUESTION                           */
+/* ========================================= */
+
+function answerQuestion(index){
+
+    if(quizAnswered){
+        return;
+    }
+
+
+    quizAnswered = true;
+
+
+    const q =
+        quizQuestions[
+            currentQuestion
+        ];
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".quiz-option"
+        );
+
+
+    buttons.forEach(
+        button=>{
+            button.classList.add(
+                "disabled"
+            );
+        }
+    );
 
 
     /*
-        The rip animation itself becomes
-        the transition into the gallery.
+        Question 5:
+        Every answer is correct.
+    */
 
-        NO additional fade.
+    const isCorrect =
+        q.correct === "all"
+        ||
+        index === q.correct;
+
+
+    if(isCorrect){
+
+        quizScore++;
+
+
+        buttons[index].classList.add(
+            "correct"
+        );
+
+
+        if(currentQuestion === 4){
+
+            quizFeedback.textContent =
+                "HAHAHAHA somehow... yes 😭💗";
+
+        }else{
+
+            quizFeedback.textContent =
+                "CORRECT!! 😭💗";
+
+        }
+
+
+        confetti({
+
+            particleCount:35,
+
+            spread:65,
+
+            origin:{y:.65}
+
+        });
+
+    }else{
+
+        buttons[index].classList.add(
+            "wrong"
+        );
+
+
+        buttons[
+            q.correct
+        ].classList.add(
+            "correct"
+        );
+
+
+        const wrongMessages=[
+
+            "NOOOO 😭",
+
+            "HAHAHAHA nice try 😭",
+
+            "ediwow... 😭",
+
+            "bro really chose that 💀"
+
+        ];
+
+
+        quizFeedback.textContent =
+            wrongMessages[
+                Math.floor(
+                    Math.random() *
+                    wrongMessages.length
+                )
+            ];
+
+    }
+
+
+    quizFeedback.classList.add(
+        "show"
+    );
+
+
+    /*
+        Wait a moment so she can see
+        the reaction before flipping
+        to the next question.
     */
 
     setTimeout(()=>{
 
-        ticket.classList.remove("rip");
+        if(currentQuestion < 4){
 
-        switchPageInstant("p4");
+            nextQuestion();
 
-    },1100);
+        }else{
+
+            showQuizResult();
+
+        }
+
+    },1000);
+
+}
+
+
+/* ========================================= */
+/* NEXT QUESTION — NOTEBOOK FLIP             */
+/* ========================================= */
+
+function nextQuestion(){
+
+    quizCard.classList.remove(
+        "flip-in"
+    );
+
+
+    quizCard.classList.add(
+        "flip-out"
+    );
+
+
+    setTimeout(()=>{
+
+        currentQuestion++;
+
+
+        quizCard.classList.remove(
+            "flip-out"
+        );
+
+
+        loadQuestion();
+
+
+        quizCard.classList.add(
+            "flip-in"
+        );
+
+
+        setTimeout(()=>{
+
+            quizCard.classList.remove(
+                "flip-in"
+            );
+
+        },600);
+
+    },450);
+
+}
+
+
+/* ========================================= */
+/* QUIZ RESULT                               */
+/* ========================================= */
+
+function showQuizResult(){
+
+    questionArea.style.display =
+        "none";
+
+
+    quizProgress.textContent =
+        "♥ ♥ ♥ ♥ ♥";
+
+
+    quizProgress.classList.add(
+        "pop"
+    );
+
+
+    resultScore.textContent =
+        "Score: " +
+        quizScore +
+        "/5";
+
+
+    resultHearts.textContent =
+        "♥ ".repeat(
+            quizScore
+        ) +
+        "○ ".repeat(
+            5-quizScore
+        );
+
+
+    const messages = {
+
+        0:
+        "Okay... we have some studying to do HAHAHA. But it's okay, I still like you anyway :))",
+
+        1:
+        "Okay... we have some studying to do HAHAHA. But it's okay, I still like you anyway :))",
+
+        2:
+        "Hmmmmm... not terrible 😭 You know a little about me, but there's definitely more to discover.",
+
+        3:
+        "Okayyy, halfway there! I think you've been paying attention after all :>",
+
+        4:
+        "YOU ACTUALLY KNOW ME. One more and you would've gotten the full score...",
+
+        5:
+        "HOW DO YOU KNOW ME THIS WELL 😭 Okay, you officially get bragging rights. Maybe I've been a little too obvious about myself..."
+
+    };
+
+
+    resultMessage.textContent =
+        messages[
+            quizScore
+        ];
+
+
+    quizResult.classList.add(
+        "show"
+    );
 
 }
 
@@ -1578,29 +3111,50 @@ function tearTicket(){
 const polaroidData=[
 
     {
-        image:"photos/pix1.webp",
-        caption:"a little memory"
+
+        image:
+            "photos/pix1.webp",
+
+        caption:
+            "a little memory"
+
     },
 
     {
-        image:"photos/pix2.webp",
-        caption:"pretty moments"
+
+        image:
+            "photos/pix2.webp",
+
+        caption:
+            "pretty moments"
+
     },
 
     {
-        image:"photos/pix3.webp",
-        caption:"cozy days"
+
+        image:
+            "photos/pix3.webp",
+
+        caption:
+            "cozy days"
+
     },
 
     {
-        image:"photos/pix4.webp",
-        caption:"just for you"
+
+        image:
+            "photos/pix4.webp",
+
+        caption:
+            "just for you"
+
     }
 
 ];
 
 
-let polaroidInterval=null;
+let polaroidInterval =
+    null;
 
 
 function createPolaroid(){
@@ -1612,23 +3166,25 @@ function createPolaroid(){
 
 
     const p =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
-    p.className=
+    p.className =
         "falling-polaroid";
 
 
     const data =
         polaroidData[
             Math.floor(
-                Math.random()*
+                Math.random() *
                 polaroidData.length
             )
         ];
 
 
-    p.innerHTML=`
+    p.innerHTML = `
 
         <div class="falling-photo">
 
@@ -1648,28 +3204,33 @@ function createPolaroid(){
 
 
     p.style.left =
-        (2+Math.random()*90)+"vw";
+        (2 + Math.random()*90)
+        + "vw";
 
 
     const rotation =
-        -18+Math.random()*36;
+        -18 +
+        Math.random()*36;
 
 
     p.style.setProperty(
         "--rotation",
-        rotation+"deg"
+        rotation + "deg"
     );
 
 
     const duration =
-        7+Math.random()*5;
+        7 +
+        Math.random()*5;
 
 
     p.style.animationDuration =
-        duration+"s";
+        duration + "s";
 
 
-    container.appendChild(p);
+    container.appendChild(
+        p
+    );
 
 
     setTimeout(()=>{
@@ -1702,13 +3263,12 @@ function startPolaroidRain(){
         );
 
 
-    container.innerHTML="";
+    container.innerHTML =
+        "";
 
 
     /*
         First Polaroid waits 3 seconds.
-        Then the next ones arrive
-        every 700ms.
     */
 
     for(let i=0;i<7;i++){
@@ -1739,10 +3299,13 @@ function startPolaroidRain(){
 setInterval(()=>{
 
     const d =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
-    d.className="heart";
+    d.className =
+        "heart";
 
 
     d.textContent =
@@ -1752,14 +3315,18 @@ setInterval(()=>{
 
 
     d.style.left =
-        Math.random()*100+"vw";
+        Math.random()*100 +
+        "vw";
 
 
     d.style.fontSize =
-        (16+Math.random()*18)+"px";
+        (16+Math.random()*18) +
+        "px";
 
 
-    document.body.appendChild(d);
+    document.body.appendChild(
+        d
+    );
 
 
     setTimeout(()=>{
@@ -1770,6 +3337,13 @@ setInterval(()=>{
 
 
 },380);
+
+
+/* ========================================= */
+/* START QUIZ WHEN PAGE OPENS                */
+/* ========================================= */
+
+startQuiz();
 
 
 </script>
