@@ -1,100 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For Youu</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
 
+/* ========================================= */
+/* GLOBAL                                    */
+/* ========================================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-font-family:'Poppins',sans-serif;
-background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
-background-size:400% 400%;
-animation:bg 12s ease infinite;
-overflow:hidden;
-color:#522;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+    background-size:400% 400%;
+    animation:bg 12s ease infinite;
+    overflow:hidden;
+    color:#522;
 }
 
 @keyframes bg{
-0%{background-position:0 50%}
-50%{background-position:100% 50%}
-100%{background-position:0 50%}
+    0%{background-position:0 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0 50%}
 }
 
+
+/* ========================================= */
+/* PAGE                                      */
+/* ========================================= */
+
 .page{
-display:none;
-min-height:100vh;
-justify-content:center;
-align-items:center;
-padding:24px;
-position:relative;
+    display:none;
+    min-height:100vh;
+    justify-content:center;
+    align-items:center;
+    padding:24px;
+    position:relative;
 }
 
 .active{
-display:flex;
+    display:flex;
 }
 
+
+/* ========================================= */
+/* CARD                                      */
+/* ========================================= */
+
 .card{
-width:min(95%,480px);
-background:rgba(255,255,255,.78);
-backdrop-filter:blur(18px);
-padding:32px;
-border-radius:28px;
-box-shadow:0 20px 60px rgba(0,0,0,.2);
-text-align:center;
-z-index:10;
+    width:min(95%,480px);
+    background:rgba(255,255,255,.78);
+    backdrop-filter:blur(18px);
+    padding:32px;
+    border-radius:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
+    text-align:center;
+    z-index:10;
 }
 
 h1{
-font-family:'Playfair Display',serif;
-font-size:2.2rem;
-margin:.5rem 0 1rem;
+    font-family:'Playfair Display',serif;
+    font-size:2.2rem;
+    margin:.5rem 0 1rem;
 }
 
 p{
-line-height:1.7;
+    line-height:1.7;
 }
 
+
+/* ========================================= */
+/* BUTTONS                                   */
+/* ========================================= */
+
 button{
-border:none;
-border-radius:999px;
-padding:14px 24px;
-margin:8px;
-background:#ff4d88;
-color:#fff;
-font-weight:600;
-cursor:pointer;
-transition:.25s;
-box-shadow:0 10px 25px rgba(255,77,136,.35);
+    border:none;
+    border-radius:999px;
+    padding:14px 24px;
+    margin:8px;
+    background:#ff4d88;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+    box-shadow:0 10px 25px rgba(255,77,136,.35);
 }
 
 button:hover{
-transform:translateY(-2px);
+    transform:translateY(-2px);
 }
 
 .secondary{
-background:#fff;
-color:#ff4d88;
+    background:#fff;
+    color:#ff4d88;
 }
 
 .emoji{
-font-size:64px;
+    font-size:64px;
 }
 
 .small{
-font-size:.9rem;
-opacity:.75;
-margin-top:8px;
+    font-size:.9rem;
+    opacity:.75;
+    margin-top:8px;
 }
 
 
@@ -103,27 +125,27 @@ margin-top:8px;
 /* ========================================= */
 
 .gallery{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin:18px 0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:18px 0;
 }
 
 .ph{
-background:#fff;
-border-radius:18px;
-padding:7px;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
-overflow:hidden;
-aspect-ratio:1/1;
+    background:#fff;
+    border-radius:18px;
+    padding:7px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    overflow:hidden;
+    aspect-ratio:1/1;
 }
 
 .ph img{
-width:100%;
-height:100%;
-display:block;
-object-fit:cover;
-border-radius:13px;
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    border-radius:13px;
 }
 
 
@@ -132,18 +154,18 @@ border-radius:13px;
 /* ========================================= */
 
 .heart{
-position:fixed;
-bottom:-20px;
-animation:float 7s linear forwards;
-pointer-events:none;
-z-index:5;
+    position:fixed;
+    bottom:-20px;
+    animation:float 7s linear forwards;
+    pointer-events:none;
+    z-index:5;
 }
 
 @keyframes float{
-to{
-transform:translateY(-120vh);
-opacity:0;
-}
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
 }
 
 
@@ -152,35 +174,35 @@ opacity:0;
 /* ========================================= */
 
 #musicToggle{
-position:fixed;
-bottom:20px;
-right:20px;
-display:none;
-z-index:999;
-padding:10px 16px;
-font-size:.85rem;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    display:none;
+    z-index:999;
+    padding:10px 16px;
+    font-size:.85rem;
 }
 
 #musicGate{
-position:fixed;
-inset:0;
-z-index:1000;
-opacity:1;
-transition:opacity 1.2s ease;
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    opacity:1;
+    transition:opacity 1.2s ease;
 }
 
 #musicGate.fade-out{
-opacity:0;
-pointer-events:none;
+    opacity:0;
+    pointer-events:none;
 }
 
 #musicGate .card{
-transition:1.2s ease;
+    transition:1.2s ease;
 }
 
 #musicGate.fade-out .card{
-opacity:0;
-transform:scale(.95) translateY(-10px);
+    opacity:0;
+    transform:scale(.95) translateY(-10px);
 }
 
 
@@ -189,14 +211,14 @@ transform:scale(.95) translateY(-10px);
 /* ========================================= */
 
 #p1{
-opacity:0;
-transform:scale(1.03);
-transition:1.2s ease;
+    opacity:0;
+    transform:scale(1.03);
+    transition:1.2s ease;
 }
 
 #p1.fade-in{
-opacity:1;
-transform:scale(1);
+    opacity:1;
+    transform:scale(1);
 }
 
 
@@ -205,41 +227,41 @@ transform:scale(1);
 /* ========================================= */
 
 #no{
-position:absolute;
+    position:absolute;
 }
 
 #no.shake{
-animation:shake .22s ease;
+    animation:shake .22s ease;
 }
 
 @keyframes shake{
-0%{transform:translateX(0)}
-25%{transform:translateX(-5px)}
-50%{transform:translateX(5px)}
-75%{transform:translateX(-4px)}
-100%{transform:translateX(0)}
+    0%{transform:translateX(0)}
+    25%{transform:translateX(-5px)}
+    50%{transform:translateX(5px)}
+    75%{transform:translateX(-4px)}
+    100%{transform:translateX(0)}
 }
 
 #excuse{
-position:absolute;
-left:50%;
-top:-30px;
-transform:translateX(-50%);
-background:#fff;
-color:#ff4d88;
-padding:4px 10px;
-border-radius:999px;
-font-size:.75rem;
-font-weight:600;
-white-space:nowrap;
-opacity:0;
-transition:.2s;
-pointer-events:none;
+    position:absolute;
+    left:50%;
+    top:-30px;
+    transform:translateX(-50%);
+    background:#fff;
+    color:#ff4d88;
+    padding:4px 10px;
+    border-radius:999px;
+    font-size:.75rem;
+    font-weight:600;
+    white-space:nowrap;
+    opacity:0;
+    transition:.2s;
+    pointer-events:none;
 }
 
 #excuse.show{
-opacity:1;
-transform:translateX(-50%) translateY(-4px);
+    opacity:1;
+    transform:translateX(-50%) translateY(-4px);
 }
 
 
@@ -248,34 +270,38 @@ transform:translateX(-50%) translateY(-4px);
 /* ========================================= */
 
 .card.movie-out{
-animation:movieOut .9s cubic-bezier(.22,1,.36,1) forwards;
+    animation:movieOut .9s cubic-bezier(.22,1,.36,1) forwards;
 }
 
 @keyframes movieOut{
-0%{
-transform:scale(1) rotate(0);
-opacity:1;
-}
 
-30%{
-transform:scale(1.06) rotate(-2deg);
-}
+    0%{
+        transform:scale(1) rotate(0);
+        opacity:1;
+    }
 
-100%{
-transform:scale(.75) rotate(6deg);
-opacity:0;
-filter:blur(8px);
-}
+    30%{
+        transform:scale(1.06) rotate(-2deg);
+    }
+
+    100%{
+        transform:scale(.75) rotate(6deg);
+        opacity:0;
+        filter:blur(8px);
+    }
+
 }
 
 .yes-pop{
-animation:yesPop .35s ease;
+    animation:yesPop .35s ease;
 }
 
 @keyframes yesPop{
-0%{transform:scale(1)}
-50%{transform:scale(1.18)}
-100%{transform:scale(1)}
+
+    0%{transform:scale(1)}
+    50%{transform:scale(1.18)}
+    100%{transform:scale(1)}
+
 }
 
 
@@ -284,110 +310,112 @@ animation:yesPop .35s ease;
 /* ========================================= */
 
 .ticket{
-width:min(95%,460px);
-background:#fff8ef;
-border-radius:24px;
-overflow:hidden;
-box-shadow:0 20px 50px rgba(0,0,0,.18);
-position:relative;
-z-index:10;
+    width:min(95%,460px);
+    background:#fff8ef;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,.18);
+    position:relative;
+    z-index:10;
 }
 
 .ticket::before,
 .ticket::after{
-content:"";
-position:absolute;
-width:26px;
-height:26px;
-background:#f5bfd4;
-border-radius:50%;
-top:50%;
-transform:translateY(-50%);
+    content:"";
+    position:absolute;
+    width:26px;
+    height:26px;
+    background:#f5bfd4;
+    border-radius:50%;
+    top:50%;
+    transform:translateY(-50%);
 }
 
 .ticket::before{
-left:-13px;
+    left:-13px;
 }
 
 .ticket::after{
-right:-13px;
+    right:-13px;
 }
 
 .ticket-top{
-background:#ff4d88;
-color:white;
-padding:18px;
+    background:#ff4d88;
+    color:white;
+    padding:18px;
 }
 
 .stub{
-font-size:.75rem;
-letter-spacing:3px;
-opacity:.9;
+    font-size:.75rem;
+    letter-spacing:3px;
+    opacity:.9;
 }
 
 .cinema{
-margin-top:6px;
-font-weight:600;
+    margin-top:6px;
+    font-weight:600;
 }
 
 .ticket-body{
-padding:28px;
-text-align:center;
+    padding:28px;
+    text-align:center;
 }
 
 .movie{
-font-family:'Playfair Display',serif;
-font-size:2rem;
-color:#d6336c;
+    font-family:'Playfair Display',serif;
+    font-size:2rem;
+    color:#d6336c;
 }
 
 .names{
-margin:18px 0;
-font-size:1.15rem;
-font-weight:600;
+    margin:18px 0;
+    font-size:1.15rem;
+    font-weight:600;
 }
 
 .details{
-display:flex;
-justify-content:space-around;
-margin-top:18px;
+    display:flex;
+    justify-content:space-around;
+    margin-top:18px;
 }
 
 .details span{
-display:block;
-font-size:.7rem;
-color:#888;
+    display:block;
+    font-size:.7rem;
+    color:#888;
 }
 
 .details strong{
-font-size:1.15rem;
+    font-size:1.15rem;
 }
 
 .ticket-bottom{
-padding:22px;
-border-top:2px dashed #ffc2d6;
-text-align:center;
+    padding:22px;
+    border-top:2px dashed #ffc2d6;
+    text-align:center;
 }
 
 .ticket.rip{
-animation:ripTicket .9s ease forwards;
+    animation:ripTicket .9s ease forwards;
 }
 
 @keyframes ripTicket{
-0%{
-transform:scale(1);
-opacity:1;
-}
 
-35%{
-transform:scale(1.04) rotate(-2deg);
-}
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
 
-100%{
-transform:translateY(-120px) rotate(8deg) scale(.82);
-opacity:0;
-filter:blur(10px);
-}
+    35%{
+        transform:scale(1.04) rotate(-2deg);
+    }
+
+    100%{
+        transform:translateY(-120px) rotate(8deg) scale(.82);
+        opacity:0;
+        filter:blur(10px);
+    }
+
 }
 
 
@@ -396,124 +424,278 @@ filter:blur(10px);
 /* ========================================= */
 
 #p4{
-position:relative;
-overflow:hidden;
+    position:relative;
+    overflow:hidden;
 }
 
 #p4 .card{
-position:relative;
-z-index:20;
+    position:relative;
+    z-index:20;
 }
 
 .polaroid-rain{
-position:absolute;
-inset:0;
-overflow:hidden;
-pointer-events:none;
-z-index:2;
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:2;
 }
 
 .falling-polaroid{
-position:absolute;
-top:-200px;
-width:135px;
-padding:10px 10px 24px;
-background:#fff;
-box-shadow:
-0 12px 30px rgba(0,0,0,.20),
-0 3px 8px rgba(0,0,0,.08);
-border-radius:2px;
-text-align:center;
-animation:polaroidFall linear forwards;
-will-change:transform;
+    position:absolute;
+    top:-200px;
+    width:135px;
+    padding:10px 10px 24px;
+    background:#fff;
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.20),
+        0 3px 8px rgba(0,0,0,.08);
+    border-radius:2px;
+    text-align:center;
+    animation:polaroidFall linear forwards;
+    will-change:transform;
 }
 
 .falling-photo{
-width:100%;
-height:110px;
-background:#fdf3f7;
-overflow:hidden;
+    width:100%;
+    height:110px;
+    background:#fdf3f7;
+    overflow:hidden;
 }
 
 .falling-photo img{
-width:100%;
-height:100%;
-display:block;
-object-fit:cover;
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
 }
 
 .falling-caption{
-font-size:9px;
-font-family:'Poppins',sans-serif;
-color:#777;
-margin-top:7px;
-letter-spacing:.3px;
+    font-size:9px;
+    font-family:'Poppins',sans-serif;
+    color:#777;
+    margin-top:7px;
+    letter-spacing:.3px;
 }
 
 @keyframes polaroidFall{
 
-0%{
-transform:
-translateY(-200px)
-rotate(var(--rotation));
-opacity:0;
-}
+    0%{
+        transform:
+            translateY(-200px)
+            rotate(var(--rotation));
+        opacity:0;
+    }
 
-10%{
-opacity:1;
-}
+    10%{
+        opacity:1;
+    }
 
-25%{
-transform:
-translateY(25vh)
-rotate(calc(var(--rotation) + 8deg));
-}
+    25%{
+        transform:
+            translateY(25vh)
+            rotate(calc(var(--rotation) + 8deg));
+    }
 
-50%{
-transform:
-translateY(50vh)
-rotate(calc(var(--rotation) - 8deg));
-}
+    50%{
+        transform:
+            translateY(50vh)
+            rotate(calc(var(--rotation) - 8deg));
+    }
 
-75%{
-transform:
-translateY(75vh)
-rotate(calc(var(--rotation) + 5deg));
-}
+    75%{
+        transform:
+            translateY(75vh)
+            rotate(calc(var(--rotation) + 5deg));
+    }
 
-100%{
-transform:
-translateY(115vh)
-rotate(var(--rotation));
-opacity:.9;
-}
+    100%{
+        transform:
+            translateY(115vh)
+            rotate(var(--rotation));
+        opacity:.9;
+    }
 
 }
 
 @media(max-width:500px){
 
-.falling-polaroid{
-width:105px;
-padding:8px 8px 18px;
-}
+    .falling-polaroid{
+        width:105px;
+        padding:8px 8px 18px;
+    }
 
-.falling-photo{
-height:85px;
-}
+    .falling-photo{
+        height:85px;
+    }
 
-.falling-caption{
-font-size:8px;
-}
+    .falling-caption{
+        font-size:8px;
+    }
 
 }
 
 #p4 h1{
-color:#d6336c;
+    color:#d6336c;
 }
 
 #p4 button{
-position:relative;
-z-index:30;
+    position:relative;
+    z-index:30;
+}
+
+
+/* ========================================= */
+/* PAGE 5 — THE OTHER HALF                  */
+/* ========================================= */
+
+#p5{
+    overflow-y:auto;
+    overflow-x:hidden;
+    align-items:flex-start;
+    padding-top:35px;
+    padding-bottom:35px;
+}
+
+.poem-card{
+    width:min(94%,620px);
+    max-height:calc(100vh - 50px);
+    overflow-y:auto;
+
+    background:rgba(255,255,255,.86);
+    backdrop-filter:blur(18px);
+
+    padding:38px 38px 30px;
+    border-radius:28px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.20);
+
+    text-align:left;
+    z-index:10;
+
+    scrollbar-width:thin;
+}
+
+.poem-card::-webkit-scrollbar{
+    width:6px;
+}
+
+.poem-card::-webkit-scrollbar-thumb{
+    background:rgba(214,51,108,.35);
+    border-radius:10px;
+}
+
+.poem-header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.poem-header .emoji{
+    font-size:48px;
+}
+
+.poem-header h1{
+    font-size:1.55rem;
+    color:#522;
+    margin:10px 0 16px;
+}
+
+.poem-title{
+    font-family:'Playfair Display',serif;
+    font-size:2.3rem;
+    color:#d6336c;
+    font-weight:700;
+}
+
+.poem-text{
+    font-family:'Caveat',cursive;
+    font-size:1.42rem;
+    line-height:1.55;
+    color:#5b4a45;
+}
+
+.poem-text p{
+    margin:0 0 20px;
+}
+
+.poem-text .emphasis{
+    font-size:1.6rem;
+    color:#c94c72;
+    font-weight:600;
+    text-align:center;
+    margin:28px 0;
+}
+
+.poem-text .ending{
+    font-family:'Playfair Display',serif;
+    font-size:1.35rem;
+    color:#d6336c;
+    font-weight:600;
+    text-align:center;
+    margin:28px 0 18px;
+}
+
+.poem-text .final-line{
+    text-align:center;
+    font-size:1.55rem;
+    color:#c94c72;
+    margin-top:30px;
+    margin-bottom:10px;
+}
+
+.poem-card button{
+    display:block;
+    margin:28px auto 0;
+}
+
+
+/* ========================================= */
+/* PAGE 5 — PHONE                          */
+/* ========================================= */
+
+@media(max-width:500px){
+
+    #p5{
+        padding:20px 10px;
+    }
+
+    .poem-card{
+        width:96%;
+        max-height:calc(100vh - 30px);
+        padding:28px 22px 24px;
+        border-radius:22px;
+    }
+
+    .poem-header .emoji{
+        font-size:42px;
+    }
+
+    .poem-header h1{
+        font-size:1.25rem;
+    }
+
+    .poem-title{
+        font-size:2rem;
+    }
+
+    .poem-text{
+        font-size:1.25rem;
+        line-height:1.5;
+    }
+
+    .poem-text .emphasis{
+        font-size:1.4rem;
+    }
+
+    .poem-text .ending{
+        font-size:1.15rem;
+    }
+
+    .poem-text .final-line{
+        font-size:1.35rem;
+    }
+
 }
 
 
@@ -522,86 +704,86 @@ z-index:30;
 /* ========================================= */
 
 #p6{
-overflow:hidden;
+    overflow:hidden;
 }
 
 .letter-card{
-width:min(95%,500px);
-background:
-linear-gradient(
-rgba(255,250,235,.96),
-rgba(255,248,225,.96)
-);
-padding:38px 32px 30px;
-border-radius:5px;
-box-shadow:
-0 18px 45px rgba(0,0,0,.20),
-0 3px 8px rgba(0,0,0,.08);
-position:relative;
-transform:rotate(-1deg);
-z-index:10;
+    width:min(95%,500px);
+    background:
+        linear-gradient(
+            rgba(255,250,235,.96),
+            rgba(255,248,225,.96)
+        );
+    padding:38px 32px 30px;
+    border-radius:5px;
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.20),
+        0 3px 8px rgba(0,0,0,.08);
+    position:relative;
+    transform:rotate(-1deg);
+    z-index:10;
 }
 
 .letter-card::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-repeating-linear-gradient(
-to bottom,
-transparent 0px,
-transparent 31px,
-rgba(190,170,150,.22) 32px
-);
-pointer-events:none;
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 31px,
+            rgba(190,170,150,.22) 32px
+        );
+    pointer-events:none;
 }
 
 .letter-tape{
-position:absolute;
-width:95px;
-height:25px;
-background:rgba(255,182,193,.55);
-top:-10px;
-left:50%;
-transform:
-translateX(-50%)
-rotate(-3deg);
-box-shadow:0 2px 5px rgba(0,0,0,.08);
+    position:absolute;
+    width:95px;
+    height:25px;
+    background:rgba(255,182,193,.55);
+    top:-10px;
+    left:50%;
+    transform:
+        translateX(-50%)
+        rotate(-3deg);
+    box-shadow:0 2px 5px rgba(0,0,0,.08);
 }
 
 .letter-content{
-position:relative;
-z-index:2;
+    position:relative;
+    z-index:2;
 }
 
 .letter-title{
-font-family:'Caveat',cursive;
-font-size:2.5rem;
-color:#c94c72;
-margin-bottom:12px;
+    font-family:'Caveat',cursive;
+    font-size:2.5rem;
+    color:#c94c72;
+    margin-bottom:12px;
 }
 
 .letter-text{
-font-family:'Caveat',cursive;
-font-size:1.55rem;
-line-height:1.55;
-color:#5b4a45;
-text-align:left;
+    font-family:'Caveat',cursive;
+    font-size:1.55rem;
+    line-height:1.55;
+    color:#5b4a45;
+    text-align:left;
 }
 
 .letter-sign{
-font-family:'Caveat',cursive;
-font-size:1.7rem;
-text-align:right;
-margin-top:18px;
-color:#c94c72;
+    font-family:'Caveat',cursive;
+    font-size:1.7rem;
+    text-align:right;
+    margin-top:18px;
+    color:#c94c72;
 }
 
 .letter-card button{
-font-family:'Poppins',sans-serif;
-position:relative;
-z-index:3;
-margin-top:20px;
+    font-family:'Poppins',sans-serif;
+    position:relative;
+    z-index:3;
+    margin-top:20px;
 }
 
 
@@ -610,32 +792,34 @@ margin-top:20px;
 /* ========================================= */
 
 .letter-decoration{
-position:absolute;
-font-size:32px;
-opacity:.75;
-z-index:1;
-animation:tinyFloat 4s ease-in-out infinite;
+    position:absolute;
+    font-size:32px;
+    opacity:.75;
+    z-index:1;
+    animation:tinyFloat 4s ease-in-out infinite;
 }
 
 .letter-decoration.one{
-top:10%;
-left:8%;
+    top:10%;
+    left:8%;
 }
 
 .letter-decoration.two{
-bottom:12%;
-right:8%;
-animation-delay:1s;
+    bottom:12%;
+    right:8%;
+    animation-delay:1s;
 }
 
 @keyframes tinyFloat{
-0%,100%{
-transform:translateY(0) rotate(-5deg);
-}
 
-50%{
-transform:translateY(-8px) rotate(5deg);
-}
+    0%,100%{
+        transform:translateY(0) rotate(-5deg);
+    }
+
+    50%{
+        transform:translateY(-8px) rotate(5deg);
+    }
+
 }
 
 
@@ -644,25 +828,27 @@ transform:translateY(-8px) rotate(5deg);
 /* ========================================= */
 
 #p7 .card{
-animation:finalAppear 1s ease;
+    animation:finalAppear 1s ease;
 }
 
 @keyframes finalAppear{
 
-0%{
-opacity:0;
-transform:scale(.9) translateY(20px);
-}
+    0%{
+        opacity:0;
+        transform:scale(.9) translateY(20px);
+    }
 
-100%{
-opacity:1;
-transform:scale(1) translateY(0);
-}
+    100%{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
@@ -672,11 +858,14 @@ transform:scale(1) translateY(0);
 <!-- ========================================= -->
 
 <audio id="bgMusic" loop preload="auto">
-<source src="music/song.mp3" type="audio/mpeg">
+
+    <source src="music/song.mp3" type="audio/mpeg">
+
 </audio>
 
+
 <button id="musicToggle" onclick="toggleMusic()">
-🎵 Music: ON
+    🎵 Music: ON
 </button>
 
 
@@ -686,33 +875,33 @@ transform:scale(1) translateY(0);
 
 <section id="musicGate" class="page active">
 
-<div class="card">
+    <div class="card">
 
-<div class="emoji">
-💌🎵
-</div>
+        <div class="emoji">
+            💌🎵
+        </div>
 
-<h1>
-Before you continue...
-</h1>
+        <h1>
+            Before you continue...
+        </h1>
 
-<p>
-I picked a little something to play while you look around.
-</p>
+        <p>
+            I picked a little something to play while you look around.
+        </p>
 
-<button onclick="startMusic()">
-🎵 Turn on the music
-</button>
+        <button onclick="startMusic()">
+            🎵 Turn on the music
+        </button>
 
-<p class="small">
-or continue silently, I won't judge :>
-</p>
+        <p class="small">
+            or continue silently, I won't judge :>
+        </p>
 
-<button class="secondary" onclick="continueSilent()">
-Continue silently 🤫
-</button>
+        <button class="secondary" onclick="continueSilent()">
+            Continue silently 🤫
+        </button>
 
-</div>
+    </div>
 
 </section>
 
@@ -723,25 +912,25 @@ Continue silently 🤫
 
 <section id="p1" class="page">
 
-<div class="card">
+    <div class="card">
 
-<div class="emoji">
-🐱💌
-</div>
+        <div class="emoji">
+            🐱💌
+        </div>
 
-<h1>
-HELLOOO!!
-</h1>
+        <h1>
+            HELLOOO!!
+        </h1>
 
-<p>
-Ginawa ko tongg website nato para sauuu
-</p>
+        <p>
+            Ginawa ko tongg website nato para sauuu
+        </p>
 
-<button onclick="show('p2')">
-Aysows ano gusto mo, Lander? ✨
-</button>
+        <button onclick="show('p2')">
+            Aysows ano gusto mo, Lander? ✨
+        </button>
 
-</div>
+    </div>
 
 </section>
 
@@ -752,35 +941,35 @@ Aysows ano gusto mo, Lander? ✨
 
 <section id="p2" class="page">
 
-<div class="card">
+    <div class="card">
 
-<div class="emoji">
-🌷
-</div>
+        <div class="emoji">
+            🌷
+        </div>
 
-<h1>
-Do you want to watch a movie with me?
-</h1>
+        <h1>
+            Do you want to watch a movie with me?
+        </h1>
 
-<div class="wrap">
+        <div class="wrap">
 
-<div id="excuse"></div>
+            <div id="excuse"></div>
 
-<button id="yesBtn" onclick="yes()">
-YESSS 💖
-</button>
+            <button id="yesBtn" onclick="yes()">
+                YESSS 💖
+            </button>
 
-<button id="no">
-Ayoko nga🙈
-</button>
+            <button id="no">
+                Ayoko nga🙈
+            </button>
 
-</div>
+        </div>
 
-<div class="small">
-Papayag ka talagaaa >:)
-</div>
+        <div class="small">
+            Papayag ka talagaaa >:)
+        </div>
 
-</div>
+    </div>
 
 </section>
 
@@ -791,60 +980,85 @@ Papayag ka talagaaa >:)
 
 <section id="p3" class="page">
 
-<div class="ticket" id="ticket">
+    <div class="ticket" id="ticket">
 
-<div class="ticket-top">
+        <div class="ticket-top">
 
-<div class="stub">
-ADMIT ONE
-</div>
+            <div class="stub">
+                ADMIT ONE
+            </div>
 
-<div class="cinema">
-🎬 Lander Pictures
-</div>
+            <div class="cinema">
+                🎬 Lander Pictures
+            </div>
 
-</div>
+        </div>
 
-<div class="ticket-body">
 
-<div class="movie">
-Movie Date!? 🍿
-</div>
+        <div class="ticket-body">
 
-<div class="names">
-Spider-Man: Brand New Day
-</div>
+            <div class="movie">
+                Online Movie Date!? 🍿
+            </div>
 
-<div class="details">
+            <div class="names">
+                The Notebook
+            </div>
 
-<div>
-<span>ROW</span>
-<strong>A</strong>
-</div>
+            <div class="details">
 
-<div>
-<span>SEAT</span>
-<strong>02</strong>
-</div>
+                <div>
 
-<div>
-<span>DATE</span>
-<strong>SPONTII</strong>
-</div>
+                    <span>
+                        ROW
+                    </span>
 
-</div>
+                    <strong>
+                        A
+                    </strong>
 
-</div>
+                </div>
 
-<div class="ticket-bottom">
 
-<button class="tear" onclick="tearTicket()">
-✂ Grab the Ticket!!
-</button>
+                <div>
 
-</div>
+                    <span>
+                        SEAT
+                    </span>
 
-</div>
+                    <strong>
+                        02
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        DATE
+                    </span>
+
+                    <strong>
+                        SPONTII
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="ticket-bottom">
+
+            <button class="tear" onclick="tearTicket()">
+                ✂ Grab the Ticket!!
+            </button>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -855,83 +1069,264 @@ Spider-Man: Brand New Day
 
 <section id="p4" class="page">
 
-<div
-class="polaroid-rain"
-id="polaroidRain">
-</div>
+    <div
+        class="polaroid-rain"
+        id="polaroidRain">
+    </div>
 
-<div class="card">
 
-<div class="emoji">
-📸
-</div>
+    <div class="card">
 
-<h1>
-Our Little Gallery
-</h1>
+        <div class="emoji">
+            📸
+        </div>
 
-<p class="small">
-Future core memories incoming!? 🌸
-</p>
+        <h1>
+            Our Little Gallery
+        </h1>
 
-<div class="gallery">
+        <p class="small">
+            Future core memories incoming!? 🌸
+        </p>
 
-<div class="ph">
-<img src="photos/photo1.jpg" alt="Memory 1">
-</div>
 
-<div class="ph">
-<img src="photos/photo2.jpg" alt="Memory 2">
-</div>
+        <div class="gallery">
 
-<div class="ph">
-<img src="photos/photo3.jpg" alt="Memory 3">
-</div>
+            <div class="ph">
 
-<div class="ph">
-<img src="photos/photo4.jpg" alt="Memory 4">
-</div>
+                <img
+                    src="photos/photo1.jpg"
+                    alt="Memory 1">
 
-</div>
+            </div>
 
-<button onclick="show('p5')">
-Ano 'to? random pics lang naman ah 🙄
-</button>
 
-</div>
+            <div class="ph">
+
+                <img
+                    src="photos/photo2.jpg"
+                    alt="Memory 2">
+
+            </div>
+
+
+            <div class="ph">
+
+                <img
+                    src="photos/photo3.jpg"
+                    alt="Memory 3">
+
+            </div>
+
+
+            <div class="ph">
+
+                <img
+                    src="photos/photo4.jpg"
+                    alt="Memory 4">
+
+            </div>
+
+        </div>
+
+
+        <button onclick="show('p5')">
+            Ano 'to? random pics lang naman ah 🙄
+        </button>
+
+    </div>
 
 </section>
 
 
 <!-- ========================================= -->
-<!-- PAGE 5                                   -->
+<!-- PAGE 5 — THE OTHER HALF                  -->
 <!-- ========================================= -->
 
 <section id="p5" class="page">
 
-<div class="card">
+    <div class="poem-card">
 
-<div class="emoji">
-🌙❤️
-</div>
 
-<h1>
-I LOVE YOUUUUU
-</h1>
+        <div class="poem-header">
 
-<p>
-Medyo magkalayo man tayo, pero that doesnt mean we cant make beautiful memories along the way
-</p>
+            <div class="emoji">
+                🌙
+            </div>
 
-<p style="margin-top:14px;font-weight:600">
-— Diba? 😝
-</p>
+            <h1>
+                Do you think a long-distance relationship really works?
+            </h1>
 
-<button onclick="show('p6')">
-Nako... Nagtatampo parin ako sayo tskk😳
-</button>
+            <div class="poem-title">
+                The Other Half
+            </div>
 
-</div>
+        </div>
+
+
+        <div class="poem-text">
+
+
+            <p>
+                Every day, I wake up alone.
+            </p>
+
+
+            <p>
+                My bed for two: it feels spacious.
+            </p>
+
+
+            <p>
+                But, I'm not lonely: She's only one message away.
+            </p>
+
+
+            <p>
+                “Good morning dear!” I write.
+            </p>
+
+
+            <p>
+                She writes back to me as well.
+            </p>
+
+
+            <p>
+                We tell each other what we're going to do for the day.
+                The tasks that we set for ourselves, the cool things we are
+                about to do, all the works.
+            </p>
+
+
+            <p>
+                And then there's silence for the rest of it.
+            </p>
+
+
+            <p>
+                She's off doing great things: playing sports, hanging out
+                with friends, and doing well at school!
+            </p>
+
+
+            <p>
+                I'm here writing and speaking on stage.
+                I narrate and become a speaker for everyone at school.
+            </p>
+
+
+            <p class="emphasis">
+                But... where is ours?
+            </p>
+
+
+            <p>
+                We arrive home around the same time.
+                Different parts of the world.
+            </p>
+
+
+            <p>
+                I shower, rest and lie down.
+                She does the same.
+                But I'm not lonely! I can still talk to her.
+            </p>
+
+
+            <p>
+                She's on my phone, and we're on video.
+                We see each other, but we can't touch.
+            </p>
+
+
+            <p class="emphasis">
+                That's when you realize:
+            </p>
+
+
+            <p>
+                Every single word you write to your significant other,
+                you pour all of your heart into it.
+                That's how you stay together.
+            </p>
+
+
+            <p>
+                We have to keep each other company, even if we are alone.
+                We stay patient every day and night, writing to each other
+                about the things we dream to do together, someday.
+            </p>
+
+
+            <p>
+                It's torture.
+                You're with someone you are not with.
+                Imagine the burden.
+            </p>
+
+
+            <p>
+                But when that day comes, when we finally meet,
+                and she's in front of me:
+            </p>
+
+
+            <p class="emphasis">
+                I forget all the pain.
+                All of the hardships and struggles.
+            </p>
+
+
+            <p>
+                I'd wait for the world to end just for this feeling again.
+            </p>
+
+
+            <p>
+                Every day, I wake up alone.
+                But now, I am never lonely:
+                My other half is here.
+            </p>
+
+
+            <p class="emphasis">
+                I am complete.
+            </p>
+
+
+            <p class="ending">
+                It works. It really works.
+            </p>
+
+
+            <p class="ending">
+                This may be simple, but this is LOVE.
+            </p>
+
+
+            <p>
+                A LOVE that may look like nothing for other people,
+                but it means the world for us.
+            </p>
+
+
+            <p class="final-line">
+                And she goes, or I go:
+                and the cycle starts again…
+            </p>
+
+
+        </div>
+
+
+        <button onclick="show('p6')">
+            Okay... there's one more thing 💌
+        </button>
+
+
+    </div>
 
 </section>
 
@@ -942,65 +1337,83 @@ Nako... Nagtatampo parin ako sayo tskk😳
 
 <section id="p6" class="page">
 
-<div class="letter-decoration one">
-🌸
-</div>
 
-<div class="letter-decoration two">
-💗
-</div>
+    <div class="letter-decoration one">
+        🌸
+    </div>
 
-<div class="letter-card">
 
-<div class="letter-tape"></div>
+    <div class="letter-decoration two">
+        💗
+    </div>
 
-<div class="letter-content">
 
-<div class="letter-title">
-Dear Jaiii,
-</div>
+    <div class="letter-card">
 
-<div class="letter-text">
+        <div class="letter-tape"></div>
 
-<p>
-I don't really know how to put everything I feel into words,
-so I guess I'll just write it here.
-</p>
 
-<br>
+        <div class="letter-content">
 
-<p>
-Thank you for all the little things you do.
-Even the things you probably don't think much about
-mean more to me than you know.
-</p>
 
-<br>
+            <div class="letter-title">
+                Dear Jaiii,
+            </div>
 
-<p>
-I hope you know that I love you more than anything or anyone in the world, kahit na minsan di tayo masyado naguusap.
-</p>
 
-<br>
+            <div class="letter-text">
 
-<p>
-And if you'll let me,
-I'd like to love you for the rest of our life together hehe...
-</p>
 
-<div class="letter-sign">
-— Lander ♡
-</div>
+                <p>
+                    I don't really know how to put everything I feel into words,
+                    so I guess I'll just write it here.
+                </p>
 
-</div>
 
-<button onclick="show('p7')">
-Okay... Last nato PRAMIS 💌
-</button>
+                <br>
 
-</div>
 
-</div>
+                <p>
+                    Thank you for all the little things you do.
+                    Even the things you probably don't think much about
+                    mean more to me than you know.
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    I hope you know that I love you more than anything or anyone in the world,
+                    kahit na minsan di tayo masyado naguusap.
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    And if you'll let me,
+                    I'd like to love you for the rest of our life together hehe...
+                </p>
+
+
+                <div class="letter-sign">
+                    — Lander ♡
+                </div>
+
+
+            </div>
+
+
+            <button onclick="show('p7')">
+                Okay... Last nato PRAMIS 💌
+            </button>
+
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -1011,26 +1424,26 @@ Okay... Last nato PRAMIS 💌
 
 <section id="p7" class="page">
 
-<div class="card">
+    <div class="card">
 
-<div class="emoji">
-🌙❤️
-</div>
+        <div class="emoji">
+            🌙❤️
+        </div>
 
-<h1>
-Please dont lose your love for me, 🥺
-</h1>
+        <h1>
+            I believe this can work out somehow,
+        </h1>
 
-<p>
-Whatever happens in our future together...
-I'm really happy I get to love someone as special as you YAYAYYAYY!!
-</p>
+        <p>
+            Whatever happens in our future together...
+            I'm really happy I get to love someone as special as you.
+        </p>
 
-<p style="margin-top:14px;font-weight:600">
-I hope this made you smile. 😁🌷
-</p>
+        <p style="margin-top:14px;font-weight:600">
+            I hope this made you smile. 😁🌷
+        </p>
 
-</div>
+    </div>
 
 </section>
 
@@ -1043,10 +1456,10 @@ I hope this made you smile. 😁🌷
 /* ========================================= */
 
 const bgMusic =
-document.getElementById("bgMusic");
+    document.getElementById("bgMusic");
 
 const musicToggle =
-document.getElementById("musicToggle");
+    document.getElementById("musicToggle");
 
 
 /* Preload the song */
@@ -1057,9 +1470,9 @@ bgMusic.load();
 function startMusic(){
 
     /*
-    IMPORTANT:
-    This happens immediately from the button click.
-    There is NO setTimeout before play().
+        IMPORTANT:
+        This happens immediately from the button click.
+        There is NO setTimeout before play().
     */
 
     bgMusic.volume = 0.5;
@@ -1068,23 +1481,25 @@ function startMusic(){
 
     const playPromise = bgMusic.play();
 
+
     if(playPromise !== undefined){
 
         playPromise.then(()=>{
 
             musicToggle.textContent =
-            "🎵 Music: ON";
+                "🎵 Music: ON";
 
         }).catch(error=>{
 
             console.log(
-            "Music playback error:",
-            error
+                "Music playback error:",
+                error
             );
 
         });
 
     }
+
 
     /* Show music button */
 
@@ -1094,19 +1509,19 @@ function startMusic(){
     /* Start visual transition */
 
     const gate =
-    document.getElementById("musicGate");
+        document.getElementById("musicGate");
 
     const hello =
-    document.getElementById("p1");
+        document.getElementById("p1");
 
 
     gate.classList.add("fade-out");
 
 
     /*
-    This 3000ms ONLY controls
-    when Page 1 appears.
-    It does NOT delay the music.
+        This 3000ms ONLY controls
+        when Page 1 appears.
+        It does NOT delay the music.
     */
 
     setTimeout(()=>{
@@ -1115,11 +1530,13 @@ function startMusic(){
 
         hello.classList.add("active");
 
+
         setTimeout(()=>{
 
             hello.classList.add("fade-in");
 
         },50);
+
 
     },3000);
 
@@ -1128,50 +1545,55 @@ function startMusic(){
 
 function continueSilent(){
 
-const gate =
-document.getElementById("musicGate");
+    const gate =
+        document.getElementById("musicGate");
 
-const hello =
-document.getElementById("p1");
+    const hello =
+        document.getElementById("p1");
 
-musicToggle.style.display="block";
 
-musicToggle.textContent="🔇 Music: OFF";
+    musicToggle.style.display="block";
 
-gate.classList.add("fade-out");
+    musicToggle.textContent="🔇 Music: OFF";
 
-setTimeout(()=>{
 
-gate.classList.remove("active");
+    gate.classList.add("fade-out");
 
-hello.classList.add("active");
 
-setTimeout(()=>{
+    setTimeout(()=>{
 
-hello.classList.add("fade-in");
+        gate.classList.remove("active");
 
-},50);
+        hello.classList.add("active");
 
-},1200);
+
+        setTimeout(()=>{
+
+            hello.classList.add("fade-in");
+
+        },50);
+
+
+    },1200);
 
 }
 
 
 function toggleMusic(){
 
-if(bgMusic.paused){
+    if(bgMusic.paused){
 
-bgMusic.play();
+        bgMusic.play();
 
-musicToggle.textContent="🎵 Music: ON";
+        musicToggle.textContent="🎵 Music: ON";
 
-}else{
+    }else{
 
-bgMusic.pause();
+        bgMusic.pause();
 
-musicToggle.textContent="🔇 Music: OFF";
+        musicToggle.textContent="🔇 Music: OFF";
 
-}
+    }
 
 }
 
@@ -1182,20 +1604,21 @@ musicToggle.textContent="🔇 Music: OFF";
 
 function show(id){
 
-document.querySelectorAll(".page").forEach(p=>{
+    document.querySelectorAll(".page").forEach(p=>{
 
-p.classList.remove("active");
+        p.classList.remove("active");
 
-});
-
-document.getElementById(id).classList.add("active");
+    });
 
 
-if(id==="p4"){
+    document.getElementById(id).classList.add("active");
 
-startPolaroidRain();
 
-}
+    if(id==="p4"){
+
+        startPolaroidRain();
+
+    }
 
 }
 
@@ -1205,79 +1628,85 @@ startPolaroidRain();
 /* ========================================= */
 
 const no =
-document.getElementById("no");
+    document.getElementById("no");
 
 const excuse =
-document.getElementById("excuse");
+    document.getElementById("excuse");
+
 
 const excuses=[
 
-"hala wait 😭",
-"nice try HAHAHA",
-"di pwede 😤",
-"wrong answer 🤨",
-"ayaw ko... char",
-"eh bakit 😭",
-"try mo ulit 😼",
-"no no no 🏃‍♀️"
+    "hala wait 😭",
+    "nice try HAHAHA",
+    "di pwede 😤",
+    "wrong answer 🤨",
+    "ayaw ko... char",
+    "eh bakit 😭",
+    "try mo ulit 😼",
+    "no no no 🏃‍♀️"
 
 ];
 
 
 function moveNoButton(){
 
-const w=280;
-const h=55;
+    const w=280;
 
-excuse.textContent=
-excuses[
-Math.floor(
-Math.random()*excuses.length
-)
-];
-
-excuse.classList.add("show");
-
-no.classList.add("shake");
+    const h=55;
 
 
-setTimeout(()=>{
-
-no.classList.remove("shake");
-
-no.style.left=
-Math.random()*w+"px";
-
-no.style.top=
-Math.random()*h+"px";
-
-},180);
+    excuse.textContent=
+        excuses[
+            Math.floor(
+                Math.random()*excuses.length
+            )
+        ];
 
 
-setTimeout(()=>{
+    excuse.classList.add("show");
 
-excuse.classList.remove("show");
+    no.classList.add("shake");
 
-},900);
+
+    setTimeout(()=>{
+
+        no.classList.remove("shake");
+
+
+        no.style.left=
+            Math.random()*w+"px";
+
+        no.style.top=
+            Math.random()*h+"px";
+
+
+    },180);
+
+
+    setTimeout(()=>{
+
+        excuse.classList.remove("show");
+
+    },900);
 
 }
 
 
 no.addEventListener(
-"mouseover",
-moveNoButton
+    "mouseover",
+    moveNoButton
 );
 
 
 no.addEventListener(
-"click",
-e=>{
+    "click",
+    e=>{
 
-e.preventDefault();
+        e.preventDefault();
 
-moveNoButton();
+        moveNoButton();
 
-}
+    }
 );
 
 
@@ -1287,69 +1716,77 @@ moveNoButton();
 
 function yes(){
 
-const card =
-document.querySelector("#p2 .card");
+    const card =
+        document.querySelector("#p2 .card");
 
-const btn =
-document.getElementById("yesBtn");
-
-btn.classList.add("yes-pop");
+    const btn =
+        document.getElementById("yesBtn");
 
 
-confetti({
-
-particleCount:180,
-spread:120,
-origin:{y:.65}
-
-});
+    btn.classList.add("yes-pop");
 
 
-for(let i=0;i<18;i++){
+    confetti({
 
-const h =
-document.createElement("div");
+        particleCount:180,
+        spread:120,
+        origin:{y:.65}
 
-h.className="heart";
-
-h.textContent =
-Math.random()>.5
-?"💖"
-:"🌸";
-
-h.style.left =
-(35+Math.random()*30)+"vw";
-
-h.style.bottom="35vh";
-
-h.style.fontSize =
-(20+Math.random()*20)+"px";
-
-document.body.appendChild(h);
-
-setTimeout(()=>{
-
-h.remove();
-
-},7000);
-
-}
+    });
 
 
-setTimeout(()=>{
+    for(let i=0;i<18;i++){
 
-card.classList.add("movie-out");
+        const h =
+            document.createElement("div");
 
-},180);
+
+        h.className="heart";
 
 
-setTimeout(()=>{
+        h.textContent =
+            Math.random()>.5
+            ?"💖"
+            :"🌸";
 
-card.classList.remove("movie-out");
 
-show("p3");
+        h.style.left =
+            (35+Math.random()*30)+"vw";
 
-},900);
+
+        h.style.bottom="35vh";
+
+
+        h.style.fontSize =
+            (20+Math.random()*20)+"px";
+
+
+        document.body.appendChild(h);
+
+
+        setTimeout(()=>{
+
+            h.remove();
+
+        },7000);
+
+    }
+
+
+    setTimeout(()=>{
+
+        card.classList.add("movie-out");
+
+    },180);
+
+
+    setTimeout(()=>{
+
+        card.classList.remove("movie-out");
+
+        show("p3");
+
+    },900);
 
 }
 
@@ -1360,29 +1797,29 @@ show("p3");
 
 function tearTicket(){
 
-const ticket =
-document.getElementById("ticket");
+    const ticket =
+        document.getElementById("ticket");
 
 
-confetti({
+    confetti({
 
-particleCount:120,
-spread:90,
-origin:{y:.55}
+        particleCount:120,
+        spread:90,
+        origin:{y:.55}
 
-});
-
-
-ticket.classList.add("rip");
+    });
 
 
-setTimeout(()=>{
+    ticket.classList.add("rip");
 
-ticket.classList.remove("rip");
 
-show("p4");
+    setTimeout(()=>{
 
-},900);
+        ticket.classList.remove("rip");
+
+        show("p4");
+
+    },900);
 
 }
 
@@ -1393,25 +1830,25 @@ show("p4");
 
 const polaroidData=[
 
-{
-image:"photos/pix1.webp",
-caption:"a little memory"
-},
+    {
+        image:"photos/pix1.webp",
+        caption:"a little memory"
+    },
 
-{
-image:"photos/pix2.webp",
-caption:"pretty moments"
-},
+    {
+        image:"photos/pix2.webp",
+        caption:"pretty moments"
+    },
 
-{
-image:"photos/pix3.webp",
-caption:"cozy days"
-},
+    {
+        image:"photos/pix3.webp",
+        caption:"cozy days"
+    },
 
-{
-image:"photos/pix4.webp",
-caption:"just for you"
-}
+    {
+        image:"photos/pix4.webp",
+        caption:"just for you"
+    }
 
 ];
 
@@ -1421,74 +1858,78 @@ let polaroidInterval=null;
 
 function createPolaroid(){
 
-const container =
-document.getElementById(
-"polaroidRain"
-);
-
-const p =
-document.createElement("div");
-
-p.className=
-"falling-polaroid";
+    const container =
+        document.getElementById(
+            "polaroidRain"
+        );
 
 
-const data =
-polaroidData[
-Math.floor(
-Math.random()*
-polaroidData.length
-)
-];
+    const p =
+        document.createElement("div");
 
 
-p.innerHTML=`
-
-<div class="falling-photo">
-
-<img
-src="${data.image}"
-alt="Falling memory">
-
-</div>
-
-<div class="falling-caption">
-
-${data.caption}
-
-</div>
-
-`;
+    p.className=
+        "falling-polaroid";
 
 
-p.style.left =
-(2+Math.random()*90)+"vw";
+    const data =
+        polaroidData[
+            Math.floor(
+                Math.random()*
+                polaroidData.length
+            )
+        ];
 
 
-const rotation =
--18+Math.random()*36;
+    p.innerHTML=`
 
-p.style.setProperty(
-"--rotation",
-rotation+"deg"
-);
+        <div class="falling-photo">
+
+            <img
+                src="${data.image}"
+                alt="Falling memory">
+
+        </div>
+
+        <div class="falling-caption">
+
+            ${data.caption}
+
+        </div>
+
+    `;
 
 
-const duration =
-7+Math.random()*5;
-
-p.style.animationDuration =
-duration+"s";
+    p.style.left =
+        (2+Math.random()*90)+"vw";
 
 
-container.appendChild(p);
+    const rotation =
+        -18+Math.random()*36;
 
 
-setTimeout(()=>{
+    p.style.setProperty(
+        "--rotation",
+        rotation+"deg"
+    );
 
-p.remove();
 
-},(duration+1)*1000);
+    const duration =
+        7+Math.random()*5;
+
+
+    p.style.animationDuration =
+        duration+"s";
+
+
+    container.appendChild(p);
+
+
+    setTimeout(()=>{
+
+        p.remove();
+
+    },(duration+1)*1000);
 
 }
 
@@ -1499,46 +1940,47 @@ p.remove();
 
 function startPolaroidRain(){
 
-if(polaroidInterval){
+    if(polaroidInterval){
 
-clearInterval(
-polaroidInterval
-);
+        clearInterval(
+            polaroidInterval
+        );
 
-}
-
-
-const container =
-document.getElementById(
-"polaroidRain"
-);
-
-container.innerHTML="";
+    }
 
 
-/*
-First Polaroid waits 3 seconds.
-Then the next ones arrive
-every 700ms.
-*/
-
-for(let i=0;i<7;i++){
-
-setTimeout(()=>{
-
-createPolaroid();
-
-},3000+i*700);
-
-}
+    const container =
+        document.getElementById(
+            "polaroidRain"
+        );
 
 
-polaroidInterval =
-setInterval(()=>{
+    container.innerHTML="";
 
-createPolaroid();
 
-},900);
+    /*
+        First Polaroid waits 3 seconds.
+        Then the next ones arrive
+        every 700ms.
+    */
+
+    for(let i=0;i<7;i++){
+
+        setTimeout(()=>{
+
+            createPolaroid();
+
+        },3000+i*700);
+
+    }
+
+
+    polaroidInterval =
+        setInterval(()=>{
+
+            createPolaroid();
+
+        },900);
 
 }
 
@@ -1549,31 +1991,39 @@ createPolaroid();
 
 setInterval(()=>{
 
-const d =
-document.createElement("div");
+    const d =
+        document.createElement("div");
 
-d.className="heart";
 
-d.textContent =
-Math.random()>.5
-?"❤"
-:"💖";
+    d.className="heart";
 
-d.style.left =
-Math.random()*100+"vw";
 
-d.style.fontSize =
-(16+Math.random()*18)+"px";
+    d.textContent =
+        Math.random()>.5
+        ?"❤"
+        :"💖";
 
-document.body.appendChild(d);
 
-setTimeout(()=>{
+    d.style.left =
+        Math.random()*100+"vw";
 
-d.remove();
 
-},7000);
+    d.style.fontSize =
+        (16+Math.random()*18)+"px";
+
+
+    document.body.appendChild(d);
+
+
+    setTimeout(()=>{
+
+        d.remove();
+
+    },7000);
+
 
 },380);
+
 
 </script>
 
