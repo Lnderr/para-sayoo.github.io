@@ -51,7 +51,6 @@ body{
     padding:24px;
     position:relative;
 
-    /* NEW: smooth page transition */
     opacity:0;
     transition:opacity .9s ease;
 }
@@ -274,7 +273,7 @@ button:hover{
 
 
 /* ========================================= */
-/* YES                                       */
+/* YES SPECIAL TRANSITION                    */
 /* ========================================= */
 
 .card.movie-out{
@@ -848,7 +847,6 @@ button:hover{
 
         </div>
 
-
         <div class="ticket-body">
 
             <div class="movie">
@@ -873,7 +871,6 @@ button:hover{
 
                 </div>
 
-
                 <div>
 
                     <span>
@@ -885,7 +882,6 @@ button:hover{
                     </strong>
 
                 </div>
-
 
                 <div>
 
@@ -902,7 +898,6 @@ button:hover{
             </div>
 
         </div>
-
 
         <div class="ticket-bottom">
 
@@ -928,7 +923,6 @@ button:hover{
         id="polaroidRain">
     </div>
 
-
     <div class="card">
 
         <div class="emoji">
@@ -943,46 +937,33 @@ button:hover{
             Future core memories incoming!? 🌸
         </p>
 
-
         <div class="gallery">
 
             <div class="ph">
-
                 <img
                     src="photos/photo1.jpg"
                     alt="Memory 1">
-
             </div>
 
-
             <div class="ph">
-
                 <img
                     src="photos/photo2.jpg"
                     alt="Memory 2">
-
             </div>
 
-
             <div class="ph">
-
                 <img
                     src="photos/photo3.jpg"
                     alt="Memory 3">
-
             </div>
 
-
             <div class="ph">
-
                 <img
                     src="photos/photo4.jpg"
                     alt="Memory 4">
-
             </div>
 
         </div>
-
 
         <button onclick="show('p5')">
             Ano 'to? random pics lang naman ah 🙄
@@ -1036,36 +1017,28 @@ button:hover{
         🌸
     </div>
 
-
     <div class="letter-decoration two">
         💗
     </div>
-
 
     <div class="letter-card">
 
         <div class="letter-tape"></div>
 
-
         <div class="letter-content">
-
 
             <div class="letter-title">
                 Dear Jaiii,
             </div>
 
-
             <div class="letter-text">
-
 
                 <p>
                     I don't really know how to put everything I feel into words,
                     so I guess I'll just write it here.
                 </p>
 
-
                 <br>
-
 
                 <p>
                     Thank you for all the little things you do.
@@ -1073,37 +1046,29 @@ button:hover{
                     mean more to me than you know.
                 </p>
 
-
                 <br>
-
 
                 <p>
                     I hope you know that I love you more than anything or anyone in the world,
                     kahit na minsan di tayo masyado naguusap.
                 </p>
 
-
                 <br>
-
 
                 <p>
                     And if you'll let me,
                     I'd like to love you for the rest of our life together hehe...
                 </p>
 
-
                 <div class="letter-sign">
                     — Lander ♡
                 </div>
 
-
             </div>
-
 
             <button onclick="show('p7')">
                 Okay... Last nato PRAMIS 💌
             </button>
-
 
         </div>
 
@@ -1168,7 +1133,6 @@ function startMusic(){
     const playPromise =
         bgMusic.play();
 
-
     if(playPromise !== undefined){
 
         playPromise.then(()=>{
@@ -1187,9 +1151,7 @@ function startMusic(){
 
     }
 
-
     musicToggle.style.display = "block";
-
 
     const gate =
         document.getElementById("musicGate");
@@ -1197,9 +1159,7 @@ function startMusic(){
     const hello =
         document.getElementById("p1");
 
-
     gate.classList.add("fade-out");
-
 
     setTimeout(()=>{
 
@@ -1207,13 +1167,11 @@ function startMusic(){
 
         hello.classList.add("active");
 
-
         setTimeout(()=>{
 
             hello.classList.add("fade-in");
 
         },50);
-
 
     },3000);
 
@@ -1228,14 +1186,11 @@ function continueSilent(){
     const hello =
         document.getElementById("p1");
 
-
     musicToggle.style.display="block";
 
     musicToggle.textContent="🔇 Music: OFF";
 
-
     gate.classList.add("fade-out");
-
 
     setTimeout(()=>{
 
@@ -1243,13 +1198,11 @@ function continueSilent(){
 
         hello.classList.add("active");
 
-
         setTimeout(()=>{
 
             hello.classList.add("fade-in");
 
         },50);
-
 
     },1200);
 
@@ -1276,7 +1229,7 @@ function toggleMusic(){
 
 
 /* ========================================= */
-/* SMOOTH PAGE TRANSITIONS                   */
+/* NORMAL PAGE TRANSITION                    */
 /* ========================================= */
 
 function show(id){
@@ -1287,70 +1240,54 @@ function show(id){
     const next =
         document.getElementById(id);
 
-
     if(!next || current === next){
         return;
     }
 
 
     /*
-        STEP 1:
         Fade the current page out.
     */
 
     current.style.opacity = "0";
 
 
-    /*
-        STEP 2:
-        Wait for the fade-out to finish.
-    */
-
     setTimeout(()=>{
-
-
-        /*
-            Hide the old page completely.
-        */
 
         current.classList.remove("active");
 
 
         /*
             Prepare the next page.
-            It starts invisible.
         */
 
         next.style.transition = "none";
-
         next.style.opacity = "0";
 
         next.classList.add("active");
 
 
         /*
-            Force the browser to register
-            the invisible starting position.
+            Force browser to register
+            the invisible state.
         */
 
         next.offsetHeight;
 
 
         /*
-            STEP 3:
             Fade the new page in.
         */
 
         next.style.transition =
             "opacity .9s ease";
 
-
         next.style.opacity = "1";
 
 
         /*
-            Start Polaroid rain when
-            the gallery opens.
+            Start Polaroid rain
+            when the gallery opens.
         */
 
         if(id === "p4"){
@@ -1359,8 +1296,63 @@ function show(id){
 
         }
 
-
     },900);
+
+}
+
+
+/* ========================================= */
+/* SPECIAL PAGE SWITCH                       */
+/* ========================================= */
+
+/*
+    Used for pages that already have
+    their own cinematic transition.
+
+    This prevents the special animation
+    from being followed by another fade.
+*/
+
+function switchPageInstant(id){
+
+    const current =
+        document.querySelector(".page.active");
+
+    const next =
+        document.getElementById(id);
+
+    if(!next || current === next){
+        return;
+    }
+
+
+    current.classList.remove("active");
+
+
+    next.style.transition = "none";
+    next.style.opacity = "1";
+
+    next.classList.add("active");
+
+
+    /*
+        Restore normal transition
+        for future navigation.
+    */
+
+    requestAnimationFrame(()=>{
+
+        next.style.transition =
+            "opacity .9s ease";
+
+    });
+
+
+    if(id === "p4"){
+
+        startPolaroidRain();
+
+    }
 
 }
 
@@ -1393,7 +1385,6 @@ const excuses=[
 function moveNoButton(){
 
     const w=280;
-
     const h=55;
 
 
@@ -1414,13 +1405,11 @@ function moveNoButton(){
 
         no.classList.remove("shake");
 
-
         no.style.left=
             Math.random()*w+"px";
 
         no.style.top=
             Math.random()*h+"px";
-
 
     },180);
 
@@ -1453,7 +1442,7 @@ no.addEventListener(
 
 
 /* ========================================= */
-/* YES                                       */
+/* YES — SPECIAL TRANSITION                  */
 /* ========================================= */
 
 function yes(){
@@ -1482,26 +1471,20 @@ function yes(){
         const h =
             document.createElement("div");
 
-
         h.className="heart";
-
 
         h.textContent =
             Math.random()>.5
             ?"💖"
             :"🌸";
 
-
         h.style.left =
             (35+Math.random()*30)+"vw";
 
-
         h.style.bottom="35vh";
-
 
         h.style.fontSize =
             (20+Math.random()*20)+"px";
-
 
         document.body.appendChild(h);
 
@@ -1516,8 +1499,7 @@ function yes(){
 
 
     /*
-        The button/card animation happens first.
-        Then the normal page transition begins.
+        The YES button pops first.
     */
 
     setTimeout(()=>{
@@ -1527,19 +1509,26 @@ function yes(){
     },180);
 
 
+    /*
+        The movie-out animation is now
+        the transition itself.
+
+        NO additional fade.
+    */
+
     setTimeout(()=>{
 
         card.classList.remove("movie-out");
 
-        show("p3");
+        switchPageInstant("p3");
 
-    },900);
+    },1100);
 
 }
 
 
 /* ========================================= */
-/* TICKET                                    */
+/* TICKET — SPECIAL TRANSITION               */
 /* ========================================= */
 
 function tearTicket(){
@@ -1557,21 +1546,27 @@ function tearTicket(){
     });
 
 
+    /*
+        Ticket rip animation starts.
+    */
+
     ticket.classList.add("rip");
 
 
     /*
-        Let the ticket finish its
-        special animation first.
+        The rip animation itself becomes
+        the transition into the gallery.
+
+        NO additional fade.
     */
 
     setTimeout(()=>{
 
         ticket.classList.remove("rip");
 
-        show("p4");
+        switchPageInstant("p4");
 
-    },900);
+    },1100);
 
 }
 
